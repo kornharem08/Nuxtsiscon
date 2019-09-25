@@ -14,7 +14,7 @@
 
 
 <div style="display:none;"  id="myDiv">
-    <div  v-for="(v) in even(data)" :key="v.Examdata" > 
+    <div  v-for="(v) in data" :key="v.Examdata" > 
 
       <div class="head">
         <div class="sjname">{{(v.SubjectNameEN)}}</div>
@@ -137,26 +137,7 @@ export default {
     
 
 
-var value = [
-        {"ID":"3","date":null},
-        {"ID":"24","date":"07/28/2017"},
-        {"ID":"65","date":"05/14/2018"},
-        {"ID":"36","date":"06/11/2017"},
-        {"ID":"27","date":null},
-        {"ID":"18","date":"02/26/2018"},
-        {"ID":"37","date":null},
-        {"ID":"39","date":"05/15/2017"},
-        {"ID":"10","date":"06/11/2017"},
-        {"ID":"4","date":null},
-        {"ID":"8","date":null},
-        {"ID":"12","date":"05/15/2017"},
-        {"ID":"14","date":"07/28/2017"},
-        {"ID":"19","date":"06/11/2017"}
-        ];
 
-var result = this.data.sort((a, b) => new Date(a.ExamDate) - new Date(b.ExamDate) );
-  console.log(result,"sss");
-     
    
     },
     randomcolor() {
@@ -166,11 +147,7 @@ var result = this.data.sort((a, b) => new Date(a.ExamDate) - new Date(b.ExamDate
         "5px solid " +
         this.hex[Math.floor(Math.random() * this.hex.length)]
       );
-    }, even(ppp) {
-      // Set slice() to avoid to generate an infinite loop!
-      return ppp.sort((a, b) => new Date(a.ExamDate) - new Date(b.ExamDate));
-    
-  }
+    },
   
   }
 
