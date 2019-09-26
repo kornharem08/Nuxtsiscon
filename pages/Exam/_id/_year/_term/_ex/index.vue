@@ -14,7 +14,7 @@
 
 
 <div style="display:none;"  id="myDiv">
-    <div  v-for="(v) in data" :key="v.Examdata" > 
+    <div  v-for="(v) in data2" :key="v.Examdata" > 
 
       <div class="head">
         <div class="sjname">{{(v.SubjectNameEN)}}</div>
@@ -86,7 +86,7 @@ export default {
       term: this.$route.params.term,
       ex: this.$route.params.ex,
       data: [],
-      data2 :[],
+      data2 :'',
       hex: [
         "aqua",
         "orangered",
@@ -134,7 +134,10 @@ export default {
 
 
       this.data = res.data.data
-    
+
+        this.data2 = this.data.sort((a,b) => (moment(a.ExamDate,'DD/MM/YYYY').format("DD MMMM YYYY") > moment(b.ExamDate,'DD/MM/YYYY').format("DD MMMM YYYY") ? 1:-1 ));
+        console.log(this.data2);
+        
 
 
 
