@@ -41,7 +41,7 @@
   </thead>
   <tbody v-if="this.year == 0 &&  this.term == 0">
 
-    <template v-for="(v,index) in grade">
+    <template v-for="(v,index) in grade2">
       <tr  :key="index" class ="texttd" id="test1">
         <td  class="text1" cols="7">{{v.SubjectNameEN}}</td>
         <td class="text" cols="3">{{v.EduYearTH}}</td>
@@ -52,7 +52,7 @@
 
 
     <tbody v-else>
-      <template v-for="(v ,index) in grade">
+      <template v-for="(v ,index) in grade2">
       <tr v-if="(v.EduYearTH == year && v.EduTerm == term)" :key="index" class ="texttd" id="test1">
         <td  class="text1" cols="7">{{v.SubjectNameEN}}</td>
         <td class="text" cols="3">{{v.EduYearTH}}</td>
@@ -85,6 +85,7 @@ export default {
       year: this.$route.params.year,
       term: this.$route.params.term,
       grade: [],
+      grade2 :''
     };
   },
   async created() {
@@ -102,7 +103,7 @@ export default {
       document.getElementById("loder").setAttribute("style", "display:none");
 
       this.grade = res.data.data;
-      
+      this.grade2 = this.grade.sort((a,b) =>(a.EduYearTH > b.EduYearTH ? 1:-1));
       
 
    
