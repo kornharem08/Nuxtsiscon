@@ -182,85 +182,40 @@ function b64toBlob(b64Data, contentType, sliceSize) {
 
 var dayTime = [
   {
-    Day: "MON",
-    TimeStart: "8.30",
-    TimeEnd: "10.30",
-    SubjectCode: "975-100",
-    SubjectName: "WISDOM OF LIVING",
-    ClassRoom: "5303A"
-	
-  },
-  {
-    Day: "MON",
-    TimeStart: "13.30",
-    TimeEnd: "15.30",
-    SubjectCode: "975-120",
-    SubjectName: "SOFTWARE CONSTRUCTION&MAIN",
-    ClassRoom: "5303A"
-  },
-  {
     Day: "TUE",
-    TimeStart: "11.00",
-    TimeEnd: "13.00",
-    SubjectCode: "975-100",
-    SubjectName: "DATA MINING",
-    ClassRoom: "5303A"
-  },
-  {
-    Day: "WED",
-    TimeStart: "8.00",
-    TimeEnd: "10.00",
-    SubjectCode: "975-120",
-    SubjectName: "SOFTWARE CONSTRUCTION&MAIN",
-    ClassRoom: "5303A"
-  },
-  {
-    Day: "WED",
-    TimeStart: "11.30",
-    TimeEnd: "13.30",
-    SubjectCode: "975-105",
-    SubjectName: "SOFTWARE PROCESS IMPROVE",
-    ClassRoom: "5303A"
-  },
-  {
-    Day: "WED",
-    TimeStart: "14.00",
-    TimeEnd: "15.00",
-    SubjectCode: "975-100",
-    SubjectName: "DATABASE SYSTEMS",
-    ClassRoom: "5303A"
-  },
-  {
-    Day: "THU",
-    TimeStart: "8.00",
-    TimeEnd: "9.00",
-    SubjectCode: "975-100",
-    SubjectName: "BUSINESS INFORMATION SYSTEM",
-    ClassRoom: "5303A"
+    TimeStart: "13.30",
+    TimeEnd: "16.30",
+    SubjectCode: "976-394",
+    SubjectName: "LEGAL&ETHICAL CONSIDER IN IT",
+    ClassRoom: "6310"
+	
   },
    {
     Day: "THU",
-    TimeStart: "14.00",
-    TimeEnd: "15.00",
-    SubjectCode: "975-100",
-    SubjectName: "ENGLISH FOR JOB APPLICATION",
-    ClassRoom: "5303A"
+    TimeStart: "09.00",
+    TimeEnd: "12.00",
+    SubjectCode: "976-392",
+    SubjectName: "PRE-COOP EDUCATION",
+    ClassRoom: "6310"
+	
   },
   {
     Day: "FRI",
-    TimeStart: "12.00",
-    TimeEnd: "14.00",
-    SubjectCode: "975-100",
-    SubjectName: "OBJECT-ORIENTED PROGRAM",
-    ClassRoom: "5303A"
+    TimeStart: "08.30",
+    TimeEnd: "10.30",
+    SubjectCode: "977-393",
+    SubjectName: "SEMINAR",
+    ClassRoom: "6310"
+	
   },
   {
-    Day: "SAT",
-    TimeStart: "12.30",
-    TimeEnd: "14.30",
-    SubjectCode: "975-100",
-    SubjectName: "LINEAR ALGEBRA",
-    ClassRoom: "5303A"
+    Day: "FRI",
+    TimeStart: "15.30",
+    TimeEnd: "18.30",
+    SubjectCode: "977-491",
+    SubjectName: "PROJECT IN SE",
+    ClassRoom: "6310"
+	
   },
 ];
 var posdayTime = 0;

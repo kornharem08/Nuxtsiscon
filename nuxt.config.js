@@ -33,7 +33,9 @@ export default {
     '~/plugins/axios' 
   ],
   proxy: {
-    '/api': 'https://sispsu.herokuapp.com/', //-- ตั้งค่า map proxy url api server
+    '/api': 'https://sispsu.herokuapp.com/', 
+    
+    //-- ตั้งค่า map proxy url api server
     ws: true
   },
   buildModules: [
