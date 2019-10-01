@@ -17,6 +17,10 @@
   box-sizing: border-box;
 } */
 
+* html{
+  font-family: 'Open Sans', sans-serif;
+}
+
 *,
 *:before,
 *:after {

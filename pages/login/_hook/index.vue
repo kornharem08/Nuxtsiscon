@@ -41,30 +41,33 @@
   <div>
     <form class="login-form">
     <img src="./logo.png" class="img-fluid center" alt="Responsive image" />
+ 
       <div class="txtb">
+        <label for="username">PSU Passport Account Name</label>
         <input
           type="text"
           class="form-control"
           name="username"
           id="username"
-           placeholder="PSU Passport Account Name"
+           placeholder=""
           v-model="username"
         />
       
       </div>
       <div class="txtb">
+        <label for="username">Password</label>
         <input
           type="password"
           class="form-control"
           name="password"
           id="password"
           v-model="password"
-          placeholder="Password"
+          placeholder=""
         />
         
       </div>
 
-       <input type="button" class="bottom-text" value="Sign in">
+       <input type="button" class="bottom-text" value="SIGN IN">
 
 
 
@@ -77,9 +80,8 @@
 
 export default {
   data() {
-    return {link: [
-        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Work+Sans&display=swap' }
-      ],
+    return {
+     
       id: this.$route.params.hook,
       username: "",
       password: "",
@@ -145,8 +147,8 @@ export default {
 
 body{
   min-height: 100vh;
-  background-image: linear-gradient(120deg,#7E57C2,#5C6BC0);
-  font-family: 'Work Sans', sans-serif;
+  background-image: linear-gradient(120deg,#000080,	 #1F95B2);
+  
 }
 
 .login-form{
@@ -154,7 +156,7 @@ body{
   width: 360px;
   background:white;
   height: 580px;
-  padding: 80px 40px;
+  padding: 50px 40px;
   border-radius: 10px;
   position: absolute;
   left: 50%;
@@ -179,28 +181,40 @@ body{
   width: 100%;
   padding: 0 5px;
   height: 40px;
-  margin-top: 25px;
+  border-radius: 0px;
+  
+
 }
 
 .bottom-text{
   display: block;
-  width: 100%;
+  width: 50%;
    margin: 0 auto;
-  height: 50px;
+  height: 40px;
   border: none;
   color: #fff;
   outline: none;
   cursor: pointer;
   transition: .5s;
   margin-top: 40px;
-  background-color: #2E86C1;
-  border-radius: 10px;
+  background: linear-gradient(120deg,#000080,#1F95B2);
+background-size: 150%;
+  border-radius: 0px;
+  font-weight: 400;
 
   
 
 }
 
-
-
+p{
+  color: #adadad;
+  text-align: center;
+  font-size: 11px;
+ 
+}
+label{
+  font-weight: 700;
+  margin-top: 17px;
+}
 
 </style>

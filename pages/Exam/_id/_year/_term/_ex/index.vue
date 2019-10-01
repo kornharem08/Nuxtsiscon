@@ -9,7 +9,7 @@
       <div class="rect4"></div>
       <div class="rect5"></div>
       <p>Loading</p>
-    </div>
+    </div> 
 
 
 
@@ -42,32 +42,13 @@
         </div>
       </div>
 
-      <hr align="center" width="100%" />
-      <!-- <hr style="height:1px; border:none;  background-color:#E5E7E9; width:50%; margin-top:10px; align:center; width:50%; "> -->
-      <!-- 
-      <b-row class="table1">
-        <b-col cols="4" class="col1" id="col1" :style="randomcolor()">
-          <b-row>
-            <b-col class="datetime1">
-              <div class="sjtime">{{(v.From)}}</div>
-              <div class="sjtime">{{(v.To)}}</div>
-            </b-col>
-          </b-row>
-        </b-col>
-
-        <b-col cols="8">
-          <b-row>
-            <b-col class="subject1">
+      <hr align="center" width="100%" /> 
      
-              <div class="sjroom">Room : {{(v.ExamRooms.toString())}}</div>
-              <div class="sjcode">SubjectCode : {{(v.SubjectCode)}}</div>
-              <div class="sjsection">Section : {{(v.SectionCode)}}</div>
-            </b-col>
-          </b-row>
-        </b-col>
-      </b-row>-->
     </div>
     </div>
+
+
+
   </div>
 </template>
 
@@ -137,9 +118,7 @@ export default {
 
         this.data2 = this.data.sort((a,b) => (moment(a.ExamDate,'DD/MM/YYYY').format("DD MMMM YYYY") > moment(b.ExamDate,'DD/MM/YYYY').format("DD MMMM YYYY") ? 1:-1 ));
         console.log(this.data2);
-        
-
-
+      
 
    
     },
@@ -159,14 +138,12 @@ export default {
 </script>
 
 <style scoped>
-body {
-  font-family: "Open Sans", sans-serif;
-}
+
 .sjname {
-  font-size: 16px;
-  font-weight: bolder;
-  text-align: center;
-  color: #58D68D;
+  font-size: 18px;
+  font-weight: 700;
+  margin-left: 5px;
+  color: black;
    /* #ff686b */
 }
 .date {
@@ -281,4 +258,19 @@ body {
     -webkit-transform: scaleY(1);
   }
 }
+
+.cardmain{
+   width: 100%;
+  background-image: linear-gradient(120deg,#000080,	 #1F95B2);
+  height: 200px;
+  margin-top: 10px;
+  border-radius: 30px;
+  top: 50%;
+
+
+ 
+}
+
+
+
 </style>
