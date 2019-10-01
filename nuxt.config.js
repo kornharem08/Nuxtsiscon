@@ -14,7 +14,8 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'stylesheet',  href: 'https://fonts.googleapis.com/css?family=Open+Sans:700&display=swap' }
-    ]
+    ],
+    
   },
   /*
   ** Customize the progress-bar color
@@ -53,7 +54,7 @@ export default {
   */
   build: {
     vendor: [
-      'vue-axios' //-- add vendor vue-axios
+      'vue-axios' ,//-- add vendor vue-axios
     ],
     /*
     ** You can extend webpack config here
