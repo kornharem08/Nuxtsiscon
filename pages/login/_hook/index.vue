@@ -67,7 +67,7 @@
         
       </div>
 
-       <input type="button" class="bottom-text" value="SIGN IN">
+       <input type="button" class="bottom-text" v-on:click="getid()" value="SIGN IN">
 
 
 
@@ -197,13 +197,31 @@ body{
   cursor: pointer;
   transition: .5s;
   margin-top: 40px;
-  background: linear-gradient(120deg,#000080,#1F95B2);
-background-size: 150%;
+  background: linear-gradient(120deg,#1F95B2,#000080);
+  background-size: 150%;
   border-radius: 0px;
   font-weight: 400;
 
-  
 
+/* border: none;
+background: linear-gradient(120deg,#000080,#1F95B2);
+color: #ffffff !important;
+font-weight: 400;
+height: 40px;
+text-transform: uppercase;
+border-radius: 0px;
+transition: all 0.3s ease 0s;
+margin: 0 auto;
+width: 50%; */
+
+}
+
+.bottom-text:hover {
+  border: 1px solid;
+  box-shadow: inset 0 0 20px rgba(20, 208, 241, 0.5), 0 0 20px rgba(26, 134, 223, 0.2);
+  outline-color: #1F95B2;
+  outline-offset: 15px;
+  text-shadow: 1px 1px 2px #427388; 
 }
 
 p{
@@ -213,8 +231,9 @@ p{
  
 }
 label{
-  font-weight: 700;
-  margin-top: 17px;
+  font-weight: 600;
+  margin-top: 15px;
+  
 }
 
 </style>
