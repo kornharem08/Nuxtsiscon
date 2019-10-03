@@ -11,22 +11,38 @@
 
     <div style="display:none;" id="myDiv">
       <div v-for="(v) in data2" :key="v.Examdata">
-        <div class="card-wrapper" :style="randomcolor()">
-          <div class="zodasa">
-      
-            <div
-              class="sjn"
-              style="text-align: center; font-weight: bold; margin-top: 10px; padding:0; "
-            >{{v.SubjectNameEN}}</div>
+        <div class="card-wrapper" >
+          <div class="zodasa">  
 
-             <div style=" font-weight: 550; font-size:18px; margin-top:15px;"><img src="https://img.icons8.com/color/35/000000/clock.png"> {{v.From}}-{{v.To}} </div>
-                  <div style=" font-weight: 550; font-size:18px; margin-top:15px;"><img src="https://img.icons8.com/flat_round/35/000000/home--v5.png"> {{v.ExamRooms.toString()}} </div>
-
+            <div class="sje">{{v.SubjectNameEN}}</div>
+            <center>
+              <hr style=";width: 80%; background:#00386b; height:3px;" /> 
+            </center>
+            <div style=" font-weight: 700; font-size:30px; margin-top:15px; text-align: center;">
+             
+              {{v.From}}-{{v.To}}
+            </div>
+  
 
             <center>
               <hr style=";width: 80%;" />
             </center>
-         
+<div class="row">
+    <div class="col" style="text-align: left; color:#1fb3e0; font-weight: 700; ">
+     {{v.SubjectCode}}
+    </div>
+    <div class="col" style="text-align: right;" >
+      <div class="row">
+    <div class="col" style="text-align: ">
+      <span style="color:#ce1141; font-size:20px;   font-weight: 700;">{{(moment(v.ExamDate,'DD/MM/YYYY').format("DD"))}} </span>{{(moment(v.ExamDate,'DD/MM/YYYY').format("MMMM YYYY"))}}
+    </div>
+
+    </div>
+  </div>
+   </div>
+
+
+<!-- 
             <div class="card__footer">
               <div class="card__footer-section">
                 <div class="footer-section__data">{{(moment(v.ExamDate,'DD/MM/YYYY').format("DD"))}}</div>
@@ -40,9 +56,11 @@
               </div>
               <div class="card__footer-section">
                 <div class="footer-section__data">{{v.SubjectCode}}</div>
-                <div class="footer-section__label">Code</div>
+                <div class="footer-section__label">SubjectCode</div>
               </div>
-            </div>
+            </div> -->
+
+
           </div>
         </div>
       </div>
@@ -119,40 +137,34 @@ export default {
     },
     randomcolor() {
       // alert("border-right:" + "5px solid "+this.hex[Math.floor(Math.random() * this.hex.length)])
-    
+
       return (
         "border-left:" +
         "10px solid " +
         this.hex[Math.floor(Math.random() * this.hex.length)]
-       
       );
-
-      
-   
     },
     randomcolor1() {
       // alert("border-right:" + "5px solid "+this.hex[Math.floor(Math.random() * this.hex.length)])
       return (
-        "background:" +
-        this.hex[Math.floor(Math.random() * this.hex.length)]
+        "background:" + this.hex[Math.floor(Math.random() * this.hex.length)]
       );
-    
     }
   }
 };
 </script>
 
 <style scoped>
-.card-wrapper{
-  border-bottom: 0.5px solid;
-  border-bottom-color: #adadad;
-   border-top: 0.5px solid;
-  border-top-color: #adadad;
-  margin-top: 15px;
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+.sje{
+  text-align: center;
+}
+.card-wrapper {
+
+  margin-top: 25px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.1);
 }
 .zodasa {
- padding: 15px;
+  padding: 20px;
 }
 
 .card__footer {
@@ -173,9 +185,9 @@ export default {
 }
 
 .footer-section__data {
-  font-size: 1.2rem;
-  
-  color: crimson;
+  font-size: 1.5rem;
+
+  color: #EB9486;
   font-weight: 700;
 }
 
