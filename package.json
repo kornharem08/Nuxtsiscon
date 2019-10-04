@@ -23,7 +23,8 @@
     "html2canvas": "^1.0.0-rc.4",
     "moment": "^2.24.0",
     "nuxt": "^2.0.0",
-    "vue-axios": "^2.1.4"
+    "vue-axios": "^2.1.4",
+    "vue-swal": "^1.0.0"
   },
   "devDependencies": {
     "vue-svg-loader": "^0.12.0"

@@ -2,7 +2,7 @@
 
 
   <div>
-
+    
 
     <div class="spinner" id="loder">
       <div class="rect1"></div>
@@ -13,32 +13,17 @@
       <p>Loading</p>
     </div>
 
-    <!-- <div class="tdtable" style="display : none;" id="myDiv">
-      <b-table striped hover responsive :items="grade" :fields="fields" head-variant="dark">
-        <template v-slot:table-colgroup="scope">
-          <col
-            v-for="field in scope.fields"
-            v-if="field.key == "2559" ",
-            :key="field.key"
-            :style="{ width: field.key === 'SubjectNameEN' ? '350px' : '50px' ,
-            width: field.key === 'Grade' ? '0px' : '0px',
-            width: field.key === 'SubjectCode' ? '150px' : '0px' }"
-          />
-        </template>
-      </b-table>
-    </div>-->
-  
-  
-  
+<div  style="display : none;"  id="myDiv" >
+  <div style="background-color:#00386b; color:white; height:40px; font-size:18px; font-weight:700;  margin: 0 auto;  display: block; padding:5px;"> Grade Result : {{term+"/"+year}}</div>
+<table class="table table-striped"> 
 
-<table class="table table-striped" style="display : none;"  id="myDiv"> 
-  <thead>
-    <tr  style="background : #76D7C4;">
-        <td class="aaa1" style="color : #FDFEFE;" >SUBJECTNAME</td>
-        <td class="aaa" style="color : #FDFEFE;">SUBJECTCODE</td>
-        <td class="aaa" style="color : #FDFEFE;">GRADE</td>
+    <tr >
+        <td class="aaa1" style="color : black;" >SUBJECTNAME</td>
+        <td class="aaa" style="color : black;">SUBJECTCODE</td>
+        <td class="aaa" style="color : black;">GRADE</td>
     </tr>
-  </thead>
+
+
   <tbody v-if="this.year == 0 &&  this.term == 0">
 
     <template v-for="(v,index) in grade2">
@@ -70,6 +55,7 @@
 
   
 </table>
+</div>
 
   </div>
 
@@ -185,7 +171,7 @@ p {
   font-size: 15px;
 }
 .aaa{
-   font-weight: bolder;
+   font-weight: 700;
    text-align: center;
    
 }
@@ -202,7 +188,7 @@ p {
   
 }
 .aaa1{
-   font-weight: bolder;
+   font-weight: 700;
 }
 
 

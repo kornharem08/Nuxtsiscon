@@ -31,7 +31,8 @@ export default {
   */
   plugins: [
     '@/plugins/bootstrap-vue',
-    '~/plugins/axios' 
+    '~/plugins/axios' ,
+    '~/plugins/vue-swal'
   ],
   proxy: {
     '/api': 'https://sispsu.herokuapp.com/', 
@@ -54,7 +55,8 @@ export default {
   */
   build: {
     vendor: [
-      'vue-axios' ,//-- add vendor vue-axios
+      'vue-axios' ,
+      'vue-swal'//-- add vendor vue-axios
     ],
     /*
     ** You can extend webpack config here

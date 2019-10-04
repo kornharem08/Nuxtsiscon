@@ -1,44 +1,7 @@
 <template>
-  <!-- <form> -->
-  <!-- <div>
-      <img src="./logo.png" class="img-fluid center" alt="Responsive image" />
-    </div>
-  <h3>{{id}}</h3>-->
-  <!-- <div class="ptext">
-      <p>Please input your passport account name and your Password กรุณากรอกบัญชี PSU Passport และรหัสผ่าน</p>
-    </div>
-       <div class="form-group">
-      <label for></label>
-      <div class="inputus">
-        <input
-          type="text"
-          class="form-control"
-          name="username"
-          id="username"
-          aria-describedby="helpId"
-          placeholder
-          v-model="username"
-        />
-      </div>
 
-      <div class="inputus">
-        <input
-          type="password"
-          class="form-control"
-          name="password"
-          id="password"
-          aria-describedby="helpId"
-          placeholder
-          v-model="password"
-        />
-      </div>
-    </div>
-    <div class="text-center mt-4">
-      <button type="button" v-on:click="getid()" class="btn btn-primary" btn-lg>SIGN IN</button>
-    </div>
-  </form>-->
+  <div >
 
-  <div>
     <form class="login-form">
     <img src="./logo.png" class="img-fluid center" alt="Responsive image" />
  
@@ -67,7 +30,7 @@
         
       </div>
 
-       <input type="button" class="bottom-text" v-on:click="getid()" value="SIGN IN">
+       <input type="button" class="bottom-text" v-on:click="getid(),alert()" value="SIGN IN">
 
 
 
@@ -102,10 +65,10 @@ export default {
         )
         .then(res => {
           this.getPosts();
-          alert("Login Sucess1");
+
         })
         .catch(error => {
-          alert("Login Faile");
+          this.error1();
           // console.log('error: ' + error);
         });
     },
@@ -125,19 +88,49 @@ export default {
           }
         )
         .then(res => {
-          alert("Login Sucess1");
+          this.finish();
+          
+         
         })
         .catch(error => {
-          alert("Login Faile");
+          this.error1();
+          
           // console.log('error: ' + error);
         });
     },
+     alert() {
+     this.$swal({
+  title: "Checking...",
+  text: "Please wait",
+  icon: "https://mir-s3-cdn-cf.behance.net/project_modules/disp/f1055231234507.564a1d234bfb6.gif",
+  buttons: false,
+   closeOnClickOutside: false,
+});
+    },
+    finish() {
+     this.$swal({
+  title: "Loading Success",
+  text: "Let's go Have a nice Day",
+  icon: "success",
+  buttons: false,
+  closeOnClickOutside: false,
+  timer: 4000,
+});
+    },error1(){
+      this.$swal({
+  title: "Sign In failed",
+  text: "Please Sign in agian",
+  icon: "error",
+});
+    }
     
   }
 };
 </script>   
 
 <style scope>
+
+
 *{
   margin: 0;
   padding: 0;
