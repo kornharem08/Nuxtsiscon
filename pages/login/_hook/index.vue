@@ -89,7 +89,7 @@ export default {
         )
         .then(res => {
           this.finish();
-          
+
          
         })
         .catch(error => {
@@ -102,7 +102,7 @@ export default {
      this.$swal({
   title: "Checking...",
   text: "Please wait",
-  icon: "https://mir-s3-cdn-cf.behance.net/project_modules/disp/f1055231234507.564a1d234bfb6.gif",
+  icon: "https://www.vedantaresources.com/SiteAssets/Images/loading.gif",
   buttons: false,
    closeOnClickOutside: false,
 });
