@@ -9,8 +9,12 @@
       <p>Loading</p>
     </div>
 
+
+
     <div style="display:none;" id="myDiv">
+        <div style="background-color:#00386b; color:white; height:40px; font-size:18px; font-weight:700; text-align: center; margin: 0 auto;  display: block; padding:5px;">{{showyear}}</div>
       <div v-for="(v) in data2" :key="v.Examdata">
+      
         <div class="card-wrapper" >
           <div class="zodasa">  
 
@@ -21,6 +25,10 @@
             <div style=" font-weight: 700; font-size:30px; margin-top:15px; text-align: center;">
              
               {{v.From}}-{{v.To}}
+            </div>
+             <div style=" font-weight: 400; font-size:18px; margin-top:5px; text-align: center; color:orange;">
+             
+              {{v.ExamRooms.toString()}}
             </div>
   
 
@@ -82,6 +90,8 @@ export default {
       term: this.$route.params.term,
       ex: this.$route.params.ex,
       data: [],
+      showyear:"",
+      showterm:"",
       data2: "",
       hex: [
         "aqua",
@@ -133,6 +143,14 @@ export default {
           ? 1
           : -1
       );
+      if(this.ex == "M"){
+        this.showterm ="Examination Schedule Midterm"
+      }else{
+        this.showterm = "Examination Schedule Final"
+      }
+      
+      this.showyear = this.showterm+" "+this.term+"/"+this.year;
+      
       console.log(this.data2);
     },
     randomcolor() {
@@ -160,8 +178,9 @@ export default {
 }
 .card-wrapper {
 
+ 
   margin-top: 25px;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.1);
 }
 .zodasa {
   padding: 20px;
