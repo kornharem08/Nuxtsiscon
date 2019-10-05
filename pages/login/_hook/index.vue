@@ -64,8 +64,11 @@ export default {
           }
         )
         .then(res => {
-          this.getPosts();
 
+          if(res.data.status === "success"){
+              this.getPosts();
+          }
+          
         })
         .catch(error => {
           this.error1();
@@ -88,13 +91,14 @@ export default {
           }
         )
         .then(res => {
+      
           this.finish();
 
          
         })
         .catch(error => {
           this.error1();
-          
+       
           // console.log('error: ' + error);
         });
     },
@@ -121,11 +125,7 @@ export default {
   title: "Sign In failed",
   text: "Please Sign in agian",
   icon: "error",
-}).then(function() {
-// Redirect the user
-window.top.close();
-console.log('The Ok Button was clicked.');
-});
+})
     }
     
   }
