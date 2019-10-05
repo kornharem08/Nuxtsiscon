@@ -102,25 +102,29 @@ export default {
      this.$swal({
   title: "Checking...",
   text: "Please wait",
-  icon: "https://www.vedantaresources.com/SiteAssets/Images/loading.gif",
+  icon: "http://loadinggif.com/images/image-selection/3.gif",
   buttons: false,
-   closeOnClickOutside: false,
+  closeOnClickOutside: false,
 });
     },
     finish() {
      this.$swal({
-  title: "Loading Success",
+  title: "Sign in Success",
   text: "Let's go Have a nice Day",
   icon: "success",
   buttons: false,
   closeOnClickOutside: false,
-  timer: 4000,
+  timer: 5000,
 });
     },error1(){
       this.$swal({
   title: "Sign In failed",
   text: "Please Sign in agian",
   icon: "error",
+}).then(function() {
+// Redirect the user
+window.top.close();
+console.log('The Ok Button was clicked.');
 });
     }
     
