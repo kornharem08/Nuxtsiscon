@@ -4,7 +4,7 @@
   <div>
     
 <div id="loder">
- <center><img src="./sisconnect2.jpg" class="img-fluid center"  style="width: 270px; height:100px; margin-top: 200px;
+ <center><img src="./sisconnect2.jpg" class="img-fluid center"  style="width: 230px; height:100px; margin-top: 200px;
   text-align: center;
   position: relative;" /></center>
     <center><P>Loading data please wait a moment</P></center>
@@ -20,7 +20,7 @@
 </div>
 
 <div  style="display : none;"  id="myDiv" >
-  <div style="background-color:#00386b; color:white; height:40px; font-size:18px; font-weight:700;  margin: 0 auto;  display: block; padding:5px;"> Grade Result : {{term+"/"+year}}</div>
+  <div style="background-color:#00386b; color:white; height:40px; font-size:18px; font-weight:700;  margin: 0 auto;  display: block; padding:5px;"> Grade Result : {{showyear}}</div>
 <table class="table table-striped"> 
 
     <tr >
@@ -35,8 +35,8 @@
     <template v-for="(v,index) in grade2">
       <tr  :key="index" class ="texttd" id="test1">
         <td  class="text1" cols="7">{{v.SubjectNameEN}}</td>
-        <td class="text" cols="3">{{v.EduYearTH}}</td>
-        <td class="text" cols="2">{{v.EduTerm}}</td>
+        <td class="text" cols="3">{{v.SubjectCode}}</td>
+        <td class="text" cols="2">{{v.Grade}}</td>
       </tr>
        </template>
     </tbody>
@@ -46,8 +46,8 @@
       <template v-for="(v ,index) in grade2">
       <tr v-if="(v.EduYearTH == year && v.EduTerm == term)" :key="index" class ="texttd" id="test1">
         <td  class="text1" cols="7">{{v.SubjectNameEN}}</td>
-        <td class="text" cols="3">{{v.EduYearTH}}</td>
-        <td class="text" cols="2">{{v.EduTerm}}</td>
+        <td class="text" cols="3">{{v.SubjectCode}}</td>
+        <td class="text" cols="2">{{v.Grade}}</td>
       </tr>
        </template>
        
@@ -77,7 +77,8 @@ export default {
       year: this.$route.params.year,
       term: this.$route.params.term,
       grade: [],
-      grade2 :''
+      grade2 :'',
+      showyear:''
     };
   },
   async created() {
@@ -96,8 +97,13 @@ export default {
 
       this.grade = res.data.data;
       this.grade2 = this.grade.sort((a,b) =>(a.EduYearTH > b.EduYearTH ? 1:-1));
-      
+      if(this.year == 0 && this.term == 0){
 
+          this.showyear =  "All Semester/Year";
+      }else{
+         this.showyear =  this.term+"/"+this.year;
+      }
+      
    
       console.log();
     },

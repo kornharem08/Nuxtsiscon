@@ -1,7 +1,7 @@
 <template>
   <div>
    <div id="loder">
- <center><img src="./sisconnect2.jpg" class="img-fluid center"  style="width: 270px; height:100px; margin-top: 200px;
+ <center><img src="./sisconnect2.jpg" class="img-fluid center"  style="width: 230px; height:100px; margin-top: 200px;
   text-align: center;
   position: relative;" /></center>
     <center><P>Loading data please wait a moment</P></center>
