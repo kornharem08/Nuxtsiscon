@@ -2,6 +2,8 @@
 
   <div >
 
+
+    <div id="loder">
     <form class="login-form">
     <img src="./logo.png" class="img-fluid center" alt="Responsive image" />
  
@@ -36,7 +38,24 @@
 
 
     </form>
-  </div>
+
+    </div>
+
+
+    <div id="show" style="display : none;" >
+    <form class="login-form">
+      <img src="./sisconnect2.jpg" class="img-fluid center" alt="Responsive image" style="weight:150px; height:100px;" />
+        <h1 style="color:green;">Sign in Success</h1>
+         </form>
+      </div>
+
+
+
+
+
+   
+    </div>
+ 
 </template>
 
 <script>
@@ -67,6 +86,7 @@ export default {
           console.log(res.data);
           
           if(res.data.status == "success" && res.data.authenticated == true ){
+
               this.getPosts();
           }else{
             this.error1();
@@ -75,7 +95,6 @@ export default {
         })
         .catch(error => {
           this.error1();
-          // console.log('error: ' + error);
         });
     },
     async getPosts() {
@@ -96,19 +115,19 @@ export default {
         .then(res => {
       
           this.finish();
-
+           document.getElementById("show").setAttribute("style", "display:block , weight:100%");
+            document.getElementById("loder").setAttribute("style", "display:none");
          
         })
         .catch(error => {
           this.error1();
        
-          // console.log('error: ' + error);
         });
     },
      alert() {
      this.$swal({
-  title: "Checking...",
-  text: "Please wait",
+  title: "Checking....",
+  text: "Please wait a moment",
   icon: "http://loadinggif.com/images/image-selection/3.gif",
   buttons: false,
   closeOnClickOutside: false,
@@ -117,11 +136,10 @@ export default {
     finish() {
      this.$swal({
   title: "Sign in Success",
-  text: "Let's go Have a nice Day",
+  text: "Please close your browser" ,
   icon: "success",
   buttons: false,
   closeOnClickOutside: false,
-  timer: 5000,
 });
     },error1(){
       this.$swal({

@@ -3,15 +3,21 @@
 
   <div>
     
-
-    <div class="spinner" id="loder">
+<div id="loder">
+ <center><img src="./sisconnect2.jpg" class="img-fluid center"  style="width: 270px; height:100px; margin-top: 200px;
+  text-align: center;
+  position: relative;" /></center>
+    <center><P>Loading data please wait a moment</P></center>
+    <div class="spinner" >
       <div class="rect1"></div>
       <div class="rect2"></div>
       <div class="rect3"></div>
       <div class="rect4"></div>
       <div class="rect5"></div>
-      <p>Loading</p>
+   
     </div>
+  
+</div>
 
 <div  style="display : none;"  id="myDiv" >
   <div style="background-color:#00386b; color:white; height:40px; font-size:18px; font-weight:700;  margin: 0 auto;  display: block; padding:5px;"> Grade Result : {{term+"/"+year}}</div>
@@ -101,11 +107,15 @@ export default {
 </script>
 
 <style scoped>
+p{
+  font-size: 15px;
+  font-weight: 500;
+}
 body {
   font-family: "Open Sans", sans-serif;
 }
 .spinner {
-  margin: 310px auto;
+  margin: 0 auto;
   width: 50px;
   height: 40px;
   text-align: center;
@@ -115,7 +125,7 @@ body {
 }
 
 .spinner > div {
-  background-color: #333;
+  background-color: #00386b;
   height: 100%;
   width: 6px;
   display: inline-block;
