@@ -64,8 +64,9 @@ export default {
           }
         )
         .then(res => {
-
-          if(res.data.status === "success"){
+          console.log(res.data);
+          
+          if(res.data.status == 200 ){
               this.getPosts();
           }
           
