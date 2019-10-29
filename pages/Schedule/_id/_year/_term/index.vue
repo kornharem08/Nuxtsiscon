@@ -237,7 +237,7 @@ function initCreate(){
     for(let i =0 ;i< 7;i++){
 
         
-         for(let j =1;j<13;j++){
+         for(let j =1;j<14;j++){
              checkstarttime = checkStartTime()
              
             if(checkstarttime == j && dayTimeLength != 0){
@@ -265,7 +265,7 @@ function initCreate(){
 
             }else{
                colArr[i].push(0)
-               styleList[i].push(`border:solid; background-color:rgba(0,0,0,.5); border:solid; height: 100px;width:150px ;`)
+               styleList[i].push(`border:solid; background-color:rgba(0,0,0,.5); border:solid; height: 120px;width:195px ;`)
                subjectList[i].push("")
             }
 
@@ -327,30 +327,63 @@ function initCreate(){
 function checkStartTime() {
   let num;
 
-  if (TimeStart >= 8.0 && TimeStart < 9.0) {
+  if (TimeStart >= 8.0 && TimeStart < 8.30) {
     num = 1;
-  } else if (TimeStart >= 9.0 && TimeStart < 10.0) {
+  } else if (TimeStart >= 8.3 && TimeStart < 9.0) {
     num = 2;
-  } else if (TimeStart >= 10.0 && TimeStart < 11.0) {
+  } else if (TimeStart >= 9.0 && TimeStart < 9.30) {
     num = 3;
-  } else if (TimeStart >= 11.0 && TimeStart < 12.0) {
+  } else if (TimeStart >= 9.30 && TimeStart < 10.0) {
     num = 4;
-  } else if (TimeStart >= 12.0 && TimeStart < 13.0) {
+  } else if (TimeStart >= 10.0 && TimeStart < 10.30) {
     num = 5;
-  } else if (TimeStart >= 13.0 && TimeStart < 14.0) {
+  } else if (TimeStart >= 10.30 && TimeStart < 11.0) {
     num = 6;
-  } else if (TimeStart >= 14.0 && TimeStart < 15.0) {
+  } else if (TimeStart >= 11.0 && TimeStart < 11.30) {
     num = 7;
-  } else if (TimeStart >= 15.0 && TimeStart < 16.0) {
+  } else if (TimeStart >= 11.30 && TimeStart < 12.0) {
     num = 8;
-    } else if (TimeStart >= 16.0 && TimeStart < 17.0) {
+    } else if (TimeStart >= 12.0 && TimeStart < 12.3) {
     num = 9;
-     } else if (TimeStart >= 17.0 && TimeStart < 18.0) {
+     } else if (TimeStart >= 12.3 && TimeStart < 13.0) {
     num = 10;
-     } else if (TimeStart >= 18.0 && TimeStart < 19.0) {
+     } else if (TimeStart >= 13.0 && TimeStart < 13.3) {
     num = 11;
-    } else if (TimeStart >= 19.0 && TimeStart < 20.0) {
+    } else if (TimeStart >= 13.3 && TimeStart < 14.0) {
     num = 12;
+    }else if (TimeStart >= 14.0 && TimeStart < 14.3) {
+    num = 13;
+    }else if (TimeStart >= 14.3 && TimeStart < 15.0) {
+    num = 14;
+    }else if (TimeStart >= 15.0 && TimeStart < 15.3) {
+    num = 15;
+    }else if (TimeStart >= 15.3 && TimeStart < 16.0) {
+    num = 16;
+    }else if (TimeStart >= 16.0 && TimeStart < 16.3) {
+    num = 17;
+    }else if (TimeStart >= 16.3 && TimeStart < 17.0) {
+    num = 18;
+    }
+    else if (TimeStart >= 16.3 && TimeStart < 17.0) {
+    num = 19;
+    }
+    else if (TimeStart >= 17.0 && TimeStart < 17.3) {
+    num = 20;
+    }
+    else if (TimeStart >= 17.3 && TimeStart < 18.0) {
+    num = 21;
+    }
+    else if (TimeStart >= 18.0 && TimeStart < 18.3) {
+    num = 22;
+    }
+    else if (TimeStart >= 18.3 && TimeStart < 19.0) {
+    num = 23;
+    }
+    else if (TimeStart >= 19.0 && TimeStart < 19.3) {
+    num = 24;
+    }
+    else if (TimeStart >= 19.3 && TimeStart < 20.0) {
+    num = 25;
     }
   return num;
 }
@@ -358,36 +391,68 @@ function checkStartTime() {
 function checkEndTime(col) {
   let num;
   let col2 = 0;
-  if (TimeEnd > 8.0 && TimeEnd <= 9.0) {
+  if (TimeEnd >= 8.0 && TimeEnd < 8.3) {
     num = 1;
-  } else if (TimeEnd > 9.0 && TimeEnd <= 10.0) {
+  } else if (TimeEnd >= 8.3 && TimeEnd < 9.0) {
     num = 2;
-  } else if (TimeEnd > 10.0 && TimeEnd <= 11.0) {
+  } else if (TimeEnd >= 9.0 && TimeEnd < 9.3) {
     num = 3;
-  } else if (TimeEnd > 11.0 && TimeEnd <= 12.0) {
+  } else if (TimeEnd >= 9.3 && TimeEnd < 10.0) {
     num = 4;
-  } else if (TimeEnd > 12.0 && TimeEnd <= 13.0) {
+  } else if (TimeEnd >= 10.0 && TimeEnd < 10.3) {
     num = 5;
-  } else if (TimeEnd > 13.0 && TimeEnd <= 14.0) {
+  } else if (TimeEnd >= 10.3 && TimeEnd < 11.0) {
     num = 6;
-  } else if (TimeEnd > 14.0 && TimeEnd <= 15.0) {
+  } else if (TimeEnd >= 11.0 && TimeEnd < 11.3) {
     num = 7;
-  } else if (TimeEnd > 15.0 && TimeEnd <= 16.0) {
+  } else if (TimeEnd >= 11.3 && TimeEnd < 12.0) {
     num = 8;
-  } else if (TimeEnd > 16.0 && TimeEnd <= 17.0) {
+    } else if (TimeEnd >= 12.0 && TimeEnd < 12.3) {
     num = 9;
-  } else if (TimeEnd > 17.0 && TimeEnd <= 18.0) {
+     } else if (TimeEnd >= 12.3 && TimeEnd < 13.0) {
     num = 10;
-  } else if (TimeEnd > 18.0 && TimeEnd <= 19.0) {
+     } else if (TimeEnd >= 13.0 && TimeEnd < 13.3) {
     num = 11;
-  } else if (TimeEnd > 19.0 && TimeEnd <= 20.0) {
+    } else if (TimeEnd >= 13.3 && TimeEnd < 14.0) {
     num = 12;
-  }
+    }else if (TimeEnd >= 14.0 && TimeEnd < 14.3) {
+    num = 13;
+    }else if (TimeEnd >= 14.3 && TimeEnd < 15.0) {
+    num = 14;
+    }else if (TimeEnd >= 15.0 && TimeEnd < 15.3) {
+    num = 15;
+    }else if (TimeEnd >= 15.3 && TimeEnd < 16.0) {
+    num = 16;
+    }else if (TimeEnd >= 16.0 && TimeEnd < 16.3) {
+    num = 17;
+    }else if (TimeEnd >= 16.3 && TimeEnd < 17.0) {
+    num = 18;
+    }
+    else if (TimeEnd >= 16.3 && TimeEnd < 17.0) {
+    num = 19;
+    }
+    else if (TimeEnd >= 17.0 && TimeEnd < 17.3) {
+    num = 20;
+    }
+    else if (TimeEnd >= 17.3 && TimeEnd < 18.0) {
+    num = 21;
+    }
+    else if (TimeEnd >= 18.0 && TimeEnd < 18.3) {
+    num = 22;
+    }
+    else if (TimeEnd >= 18.3 && TimeEnd < 19.0) {
+    num = 23;
+    }
+    else if (TimeEnd >= 19.0 && TimeEnd < 19.3) {
+    num = 24;
+    }
+    else if (TimeEnd >= 19.3 && TimeEnd < 20.0) {
+    num = 25;
+    }
   col2 = num - col;
 
   return col2;
 }
-
 
 
  function getRandomColor() {
