@@ -25,12 +25,13 @@
             :key="index"
             :colspan="index.colspan"
             :style="index.style"
-            style="height:120px; width:195px ;"
+            
           >
             <div>
               <div :style="index.styletext2" :class="index.row">
-                <div v-bind:class="index.colLeft" style="text-align:center;"><p>{{index.subjectname}}</p><p>{{index.subjectcode}}</p>{{index.subjectroom}}</div>
-                <div v-bind:class="index.colRight"><p>{{index.subjectname2}}</p><p>{{index.subjectcode2}}</p>{{index.subjectroom2}}</div>
+                <div :style="index.divWidth"></div>
+                <div :style="index.divLeft"><p>{{index.subjectname}}</p><p>{{index.subjectcode}}</p>{{index.subjectroom}}</div>
+                <div :style="index.divRight"><p>{{index.subjectname2}}</p><p>{{index.subjectcode2}}</p>{{index.subjectroom2}}</div>
               </div>
             </div>
           </td>
@@ -45,8 +46,9 @@
             style="height:120px; width:195px ;"
           >
             <div :style="index.styletext2" :class="index.row">
-                <div v-bind:class="index.colLeft" style="text-align:center;"><p>{{index.subjectname}}</p><p>{{index.subjectcode}}</p>{{index.subjectroom}}</div>
-                <div v-bind:class="index.colRight"><p>{{index.subjectname2}}</p><p>{{index.subjectcode2}}</p>{{index.subjectroom2}}</div>
+              <div  :style="index.divWidth"></div>
+                <div :style="index.divLeft"><p>{{index.subjectname}}</p><p>{{index.subjectcode}}</p>{{index.subjectroom}}</div>
+                <div :style="index.divRight"><p>{{index.subjectname2}}</p><p>{{index.subjectcode2}}</p>{{index.subjectroom2}}</div>
             </div>
           </td>
         </tr>
@@ -60,8 +62,9 @@
             style="height:120px; width:195px ;"
           >
             <div :style="index.styletext2" :class="index.row">
-                <div v-bind:class="index.colLeft" style="text-align:center;"><p>{{index.subjectname}}</p><p>{{index.subjectcode}}</p>{{index.subjectroom}}</div>
-                <div v-bind:class="index.colRight"><p>{{index.subjectname2}}</p><p>{{index.subjectcode2}}</p>{{index.subjectroom2}}</div>
+                 <div :style="index.divWidth"></div>
+                <div :style="index.divLeft"><p>{{index.subjectname}}</p><p>{{index.subjectcode}}</p>{{index.subjectroom}}</div>
+                <div :style="index.divRight"><p>{{index.subjectname2}}</p><p>{{index.subjectcode2}}</p>{{index.subjectroom2}}</div>
             </div>
           </td>
         </tr>
@@ -75,8 +78,9 @@
             style="height:120px; width:195px ;"
           >
             <div :style="index.styletext2" :class="index.row">
-                <div v-bind:class="index.colLeft" style="text-align:center;"><p>{{index.subjectname}}</p><p>{{index.subjectcode}}</p>{{index.subjectroom}}</div>
-                <div v-bind:class="index.colRight"><p>{{index.subjectname2}}</p><p>{{index.subjectcode2}}</p>{{index.subjectroom2}}</div>
+                <div :style="index.divWidth"></div>
+                <div :style="index.divLeft"><p>{{index.subjectname}}</p><p>{{index.subjectcode}}</p>{{index.subjectroom}}</div>
+                <div :style="index.divRight"><p>{{index.subjectname2}}</p><p>{{index.subjectcode2}}</p>{{index.subjectroom2}}</div>
             </div>
           </td>
         </tr>
@@ -90,8 +94,9 @@
             style="height:120px; width:195px ;"
           >
             <div :style="index.styletext2" :class="index.row">
-             <div v-bind:class="index.colLeft" style="text-align:center;"><p>{{index.subjectname}}</p><p>{{index.subjectcode}}</p>{{index.subjectroom}}</div>
-             <div v-bind:class="index.colRight"><p>{{index.subjectname2}}</p><p>{{index.subjectcode2}}</p>{{index.subjectroom2}}</div>
+             <div :style="index.divWidth"></div>
+             <div :style="index.divLeft"><p>{{index.subjectname}}</p><p>{{index.subjectcode}}</p>{{index.subjectroom}}</div>
+             <div :style="index.divRight"><p>{{index.subjectname2}}</p><p>{{index.subjectcode2}}</p>{{index.subjectroom2}}</div>
             </div>
           </td>
         </tr>
@@ -105,8 +110,9 @@
             style="height:120px; width:195px ;"
           >
             <div :style="index.styletext2" :class="index.row">
-             <div v-bind:class="index.colLeft" style="text-align:center;"><p>{{index.subjectname}}</p><p>{{index.subjectcode}}</p>{{index.subjectroom}}</div>
-             <div v-bind:class="index.colRight"><p>{{index.subjectname2}}</p><p>{{index.subjectcode2}}</p>{{index.subjectroom2}}</div>
+             <div :style="index.divWidth"></div>
+             <div :style="index.divLeft"><p>{{index.subjectname}}</p><p>{{index.subjectcode}}</p>{{index.subjectroom}}</div>
+             <div :style="index.divRight"><p>{{index.subjectname2}}</p><p>{{index.subjectcode2}}</p>{{index.subjectroom2}}</div>
             </div>
           </td>
         </tr>
@@ -143,7 +149,7 @@ export default {
           TimeStart: "08.30",
           TimeEnd: "10.30",
           SubjectCode: "140-452",
-          SubjectName: "DATA MINING",
+          SubjectName: "SOFTWARE CONSTRUCTION&MAIN",
           ClassRoom: "5210"
         },
         {
@@ -165,7 +171,7 @@ export default {
         {
           Day: "TUE",
           TimeStart: "16.30",
-          TimeEnd: "18.30",
+          TimeEnd: "19.30",
           SubjectCode: "140-461",
           SubjectName: "INTRO TO GAME DESIGN&DEVELOP",
           ClassRoom: "5210"
@@ -174,6 +180,14 @@ export default {
           Day: "WED",
           TimeStart: "08.30",
           TimeEnd: "10.30",
+          SubjectCode: "975-300",
+          SubjectName: "ASEAN STUDIES",
+          ClassRoom: "5210"
+        },
+        {
+          Day: "WED",
+          TimeStart: "10.30",
+          TimeEnd: "12.30",
           SubjectCode: "975-300",
           SubjectName: "ASEAN STUDIES",
           ClassRoom: "5210"
@@ -366,9 +380,13 @@ export default {
       console.log("Precolspan" + this.preveColspan + Day);
       let sumtimez = TimeEnd - TimeStart;
       let timestart = TimeStart.slice(-2);
+      let subject2 = null
+      let row = null
       // let timeend = Timeend.slice(-2);
       if (this.prevetimeEnd == TimeStart &&this.preveDay == Day &&timestart == 30) {
         result = this.preveColspan + colspan + 1;
+        subject2 = this.prevSubjectElement
+        row = "row"
       } else {
         result = colspan + 1;
       }
@@ -395,7 +413,7 @@ export default {
           sumtimez,
           SubjectCode
         );
-       this.inputInfoToSubject(this.SubjectMon,this.indexpos,result,styletext,subjectElement)
+       this.inputInfoToSubject(this.SubjectMon,this.indexpos,result,row,styletext,subjectElement,subject2)
        this.popArray(this.SubjectMon,colspan)
       } else if (Day == "TUE") {
         let namesj = SubjectName;
@@ -409,7 +427,7 @@ export default {
           sumtimez,
           SubjectCode
         );
-        this.inputInfoToSubject(this.SubjectTue,this.indexpos,result,styletext,subjectElement)
+        this.inputInfoToSubject(this.SubjectTue,this.indexpos,result,row,styletext,subjectElement,subject2)
         this.popArray(this.SubjectTue,colspan)
       } else if (Day == "WED") {
         let namesj = SubjectName;
@@ -423,7 +441,7 @@ export default {
           sumtimez,
           SubjectCode
         );
-        this.inputInfoToSubject(this.SubjectWed,this.indexpos,result,styletext,subjectElement)
+        this.inputInfoToSubject(this.SubjectWed,this.indexpos,result,row,styletext,subjectElement,subject2)
         this.popArray(this.SubjectWed,colspan)
       } else if (Day == "THU") {
         let namesj = SubjectName;
@@ -437,7 +455,7 @@ export default {
           sumtimez,
           SubjectCode
         );
-        this.inputInfoToSubject(this.SubjectThu,this.indexpos,result,styletext,subjectElement)
+        this.inputInfoToSubject(this.SubjectThu,this.indexpos,result,row,styletext,subjectElement,subject2)
         this.popArray(this.SubjectThu,colspan)
       } else if (Day == "FRI") {
         let namesj = SubjectName;
@@ -451,7 +469,7 @@ export default {
           sumtimez,
           SubjectCode
         );
-         this.inputInfoToSubject(this.SubjectFri,this.indexpos,result,styletext,subjectElement)
+         this.inputInfoToSubject(this.SubjectFri,this.indexpos,result,row,styletext,subjectElement,subject2)
          this.popArray(this.SubjectFri,colspan)
       } else if (Day == "SAT") {
         let namesj = SubjectName;
@@ -465,7 +483,7 @@ export default {
           sumtimez,
           SubjectCode
         );
-         this.inputInfoToSubject(this.SubjectSat,this.indexpos,result,styletext,subjectElement)
+         this.inputInfoToSubject(this.SubjectSat,this.indexpos,result,row,styletext,subjectElement,subject2)
          this.popArray(this.SubjectSat,colspan)
       }
       this.indexuse = count + colspan;
@@ -477,19 +495,42 @@ export default {
       this.sumtime = sumtimez;
 
     },
-    inputInfoToSubject(SubjectDay,indexpos,result,styletext,subjectElement){
+    inputInfoToSubject(SubjectDay,indexpos,result,row,styletext,subjectElement,subject2){
+      let subjectName = null
+      let subjectCode = null
+      let subjectClassRoom = null
+      let subject2Name = null
+      let subject2Code = null
+      let subject2ClassRoom = null
+      if(subject2){
+          subjectName = subject2.SubjectName
+          subjectCode = subject2.SubjectCode
+          subjectClassRoom = subject2.ClassRoom
+          subject2Name = subjectElement.SubjectName
+          subject2Code = subjectElement.SubjectCode
+          subject2ClassRoom = subjectElement.ClassRoom
+      }else{
+          subjectName = subjectElement.SubjectName
+          subjectCode = subjectElement.SubjectCode
+          subjectClassRoom = subjectElement.ClassRoom
+          subject2Name = null
+          subject2Code = null
+          subject2ClassRoom = null
+      }
       SubjectDay[indexpos] = {
           colspan: result,
           style: styletext.style,
           styletext2: styletext.text,
-          subjectname: subjectElement.SubjectName,
-          subjectcode: subjectElement.SubjectCode,
-          subjectroom: subjectElement.ClassRoom,
-          subjectname2: null,
-          subjectcode2: null,
-          subjectroom2: null,
-          colLeft: styletext.colLeft,
-          colRight: styletext.colRight
+          subjectname: subjectName,
+          subjectcode: subjectCode,
+          subjectroom: subjectClassRoom,
+          subjectname2: subject2Name,
+          subjectcode2: subject2Code,
+          subjectroom2: subject2ClassRoom,
+          divLeft: styletext.divLeft,
+          divRight: styletext.divRight,
+          divWidth:styletext.divWidth,
+          row:row
       }
     },
     popArray(nameArray,colspan){
@@ -512,9 +553,10 @@ export default {
       let timeend = Timeend.slice(-2);
       let style;
       let text;
-      let colLeft = 0;
-      let colRight = 0;
-      let row = "null";
+      let divWidth = "wdith:0px;"
+      let divLeft = `text-align: center;`;
+      let divRight = `text-align: center;`;
+      // let row = "null";
 
       let color = null;
 
@@ -550,19 +592,17 @@ export default {
           let colors = (this.sumtime * 100) / time;
           let culcet = colors % 10;
           let sssaa = colors - culcet;
-          let sumhour = (sssaa * 12) / 100;
-          let sumhour2 = Math.floor(sumhour);
-          let sumhourLeft = sumhour2;
-          let sumHourRight = 12 - sumhourLeft;
+          let widthLeft = (preveColspan * 150) -50
+          let widthRight = (colspan * 150) -70
 
           halfF = 50 / (colspan + preveColspan + 1);
           halfs = 100 - halfF + 0.1;
 
           style = `background: linear-gradient(to right, white  ${halfF}%, ${color}  ${halfF}%, ${color} ${sssaa}% ,yellow ${sssaa}% ,yellow ${halfs}%,white ${halfF}%);  height: 120px;`;
           text = ` text-align: center; font-size: 12px;`;
-          colLeft = sumhourLeft.toString();
-          colRight = sumHourRight.toString();
-          row = "row";
+          divLeft = ` text-align: center; width:${widthLeft}px;`
+          divRight = ` text-align: center; width:${widthRight}px;`
+          divWidth = "width:75px;"
         } else {
           style = ` background: linear-gradient(to right, white  ${halfF}%, ${color} ${halfF}%, ${color} ${halfs}%, white  ${halfF}%); height: 50px; `;
           text = ` text-align: center; font-size: 12px;`;
@@ -583,7 +623,7 @@ export default {
         style = `background-color: ${color}; height:120px; width:195px `;
         text = `text-align: center; font-size: 12px;`;
       }
-      return { style, text, colLeft, colRight, row };
+      return { style, text ,divLeft,divRight,divWidth };
     },
     getRandomColor() {
       var letters = "0123456789ABCDEF".split("");
