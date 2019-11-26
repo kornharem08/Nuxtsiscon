@@ -130,8 +130,8 @@ export default {
       dayTime: [
         {
           Day: "MON",
-          TimeStart: "10.30",
-          TimeEnd: "12.30",
+          TimeStart: "9.00",
+          TimeEnd: "12.00",
           SubjectCode: "977-372",
           SubjectName: "SOFTWARE CONSTRUCTION&MAIN",
           ClassRoom: "5210"
@@ -313,7 +313,7 @@ export default {
           timeends,
           element.TimeStart,
           element.Day,
-          element.SubjectName,
+          element.SubjectNameEN,
           element.SubjectCode,
           element
         );
