@@ -69,15 +69,14 @@
             <tbody :key="index"  v-if="v.EduYearTH == x.slice(0,4) && v.EduTerm == x.slice(5)">
               <tr  style="margin:0">
                 <td colspan="3" class="col-10" style="background-color:#00386b; font-size: 14px; color:white">
-                 <div> SEMESTER CREDITS: &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{{v.SemesterCredit}}</div>
-                <div> CUMULATIVE CREDITS:&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{{v.CumulativeCredit}}</div>
-                <div>SEMESTER GRADE POINT AVERAGE CREDITS:&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;{{v.SemesterPoint}}</div>
-                 <div> CUMULATIVE GRADE POINT AVERAGE CREDITS : &emsp;&emsp;&emsp;&nbsp;&nbsp;{{v.CumulativePoint}}</div>
-                <div> SEMESTER GRADE POINT AVERAGE: &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{{v.SemesterGPA}}</div>
-                <div> CUMULATIVE GRADE POINT AVERAGE: &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;{{v.CumulativeGPA}}</div>
-                <div> ACADEMIC STATUS: &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;{{v.Status}}</div> 
+                 <div> SEMESTER CREDITS:  &emsp;{{v.SemesterCredit}}</div>
+                <div> CUMULATIVE CREDITS: &emsp;{{v.CumulativeCredit}}</div>
+                <div>SEMESTER GRADE POINT AVERAGE CREDITS: &emsp;{{v.SemesterPoint}}</div>
+                 <div> CUMULATIVE GRADE POINT AVERAGE CREDITS : &emsp;{{v.CumulativePoint}}</div>
+                <div> SEMESTER GRADE POINT AVERAGE: &emsp;{{v.SemesterGPA}}</div>
+                <div> CUMULATIVE GRADE POINT AVERAGE:  &emsp;{{v.CumulativeGPA}}</div>
+                <div> ACADEMIC STATUS: &emsp;{{v.Status}}</div> 
                 </td>
-             
               </tr>
             </tbody>
             
