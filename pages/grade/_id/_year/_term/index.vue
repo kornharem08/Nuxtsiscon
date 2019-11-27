@@ -69,34 +69,34 @@
 
 
         <div class="row">
-          <div class="col-10" style="margin-left:10px; margin-top:10px">SEMESTER CREDITS:</div>
+          <div class="col-10" style="margin-left:10px; margin-top:10px; font-size: 13px;">SEMESTER CREDITS:</div>
           <div lass="col-2" style="margin-top:10px">{{v.SemesterCredit}}</div>
         </div>
         <div class="row">
-          <div class="col-10" style="margin-left:10px; margin-top:5px">CUMULATIVE CREDITS:</div>
+          <div class="col-10" style="margin-left:10px; margin-top:5px; font-size: 13px;">CUMULATIVE CREDITS:</div>
           <div style="margin-top:5px">{{v.CumulativeCredit}}</div>
         </div>
 
         <div class="row">
-          <div class="col-10" style="margin-left:10px; margin-top:5px">SEMESTER GRADE POINT AVERAGE CREDITS:</div>
+          <div class="col-10" style="margin-left:10px; margin-top:5px; font-size: 13px;">SEMESTER GRADE POINT AVERAGE CREDITS:</div>
           <div style="margin-top:5px">{{v.SemesterPoint}}</div>
         </div>
 
         <div class="row">
-          <div class="col-10" style="margin-left:10px; margin-top:5px">CUMULATIVE GRADE POINT AVERAGE CREDITS:</div>
+          <div class="col-10" style="margin-left:10px; margin-top:5px; font-size: 13px;">CUMULATIVE GRADE POINT AVERAGE CREDITS:</div>
           <div style="margin-top:5px">{{v.CumulativePoint}}</div>
         </div>
         <div class="row">
-          <div class="col-10" style="margin-left:10px; margin-top:5px">SEMESTER GRADE POINT AVERAGE:</div>
+          <div class="col-10" style="margin-left:10px; margin-top:5px; font-size: 13px;">SEMESTER GRADE POINT AVERAGE:</div>
           <div style="margin-top:5px">{{v.SemesterGPA}}</div>
         </div>
         <div class="row">
-          <div class="col-10" style="margin-left:10px; margin-top:5px">CUMULATIVE GRADE POINT AVERAGE:</div>
+          <div class="col-10" style="margin-left:10px; margin-top:5px; font-size: 13px;">CUMULATIVE GRADE POINT AVERAGE:</div>
           <div style="margin-top:5px">{{v.CumulativeGPA}}</div>
         </div>
 
         <div class="row">
-          <div class="col-10" style="margin-left:10px; margin-top:5px">ACADEMIC STATUS: </div>
+          <div class="col-10" style="margin-left:10px; margin-top:5px ;  font-size: 13px;">ACADEMIC STATUS: </div>
           <div  style="color:LightSeaGreen; margin-top:5px">{{v.Status}}</div>
         </div> 
 
