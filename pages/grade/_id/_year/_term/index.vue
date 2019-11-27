@@ -1,71 +1,113 @@
 <template>
-
-
   <div>
-    
-<div id="loder">
- <center><img src="./sisconnect2.jpg" class="img-fluid center"  style="width: 230px; height:100px; margin-top: 200px;
+    <div id="loder">
+      <center>
+        <img
+          src="./sisconnect2.jpg"
+          class="img-fluid center"
+          style="width: 230px; height:100px; margin-top: 200px;
   text-align: center;
-  position: relative;" /></center>
-    <center><P>Loading data please wait a moment</P></center>
-    <div class="spinner" >
-      <div class="rect1"></div>
-      <div class="rect2"></div>
-      <div class="rect3"></div>
-      <div class="rect4"></div>
-      <div class="rect5"></div>
-   
+  position: relative;"
+        />
+      </center>
+      <center>
+        <P>Loading data please wait a moment</P>
+      </center>
+      <div class="spinner">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
+      </div>
     </div>
-  
-</div>
 
-<div  style="display : none;"  id="myDiv" >
-  <div style="background-color:#00386b; color:white; height:40px; font-size:18px; font-weight:700;  margin: 0 auto;  display: block; padding:5px;"> Grade Result : {{showyear}}</div>
-<table class="table table-striped"> 
-
-    <tr >
-        <td class="aaa1" style="color : black;" >SUBJECTNAME</td>
-        <td class="aaa" style="color : black;">SUBJECTCODE</td>
-        <td class="aaa" style="color : black;">GRADE</td>
-    </tr>
+    <div style="display : none; " id="myDiv">
+      <div
+        style="background-color:#00386b; color:white; height:40px; font-size:18px; font-weight:700;  margin: 0 auto;  display: block; padding:5px;"
+      >Grade Result : {{showyear}}</div>
 
 
-  <tbody v-if="this.year == 0 &&  this.term == 0">
+      <table class="table table-striped">
+        <tr>
+          <td class="aaa1" style="color : black;">SUBJECTNAME</td>
+          <td class="aaa" style="color : black;">SUBJECTCODE</td>
+          <td class="aaa" style="color : black;">GRADE</td>
+        </tr>
 
-    <template v-for="(v,index) in grade2">
-      <tr  :key="index" class ="texttd" id="test1">
-        <td  class="text1" cols="7">{{v.SubjectNameEN}}</td>
-        <td class="text" cols="3">{{v.SubjectCode}}</td>
-        <td class="text" cols="2">{{v.Grade}}</td>
-      </tr>
-       </template>
-    </tbody>
+        <tbody v-if="this.year == 0 &&  this.term == 0">
+          <template v-for="(v,index) in grade2">
+            <tr :key="index" class="texttd" id="test1">
+              <td class="text1" cols="7">{{v.SubjectNameEN}}</td>
+              <td class="text" cols="3">{{v.SubjectCode}}</td>
+              <td class="text" cols="2">{{v.Grade}}</td>
+            </tr>
+          </template>
+        </tbody>
+
+        <tbody v-else>
+          <template v-for="(v ,index) in grade2">
+            <tr
+              v-if="(v.EduYearTH == year && v.EduTerm == term)"
+              :key="index"
+              class="texttd"
+              id="test1"
+            >
+              <td class="text1" cols="7">{{v.SubjectNameEN}}</td>
+              <td class="text" cols="3">{{v.SubjectCode}}</td>
+              <td class="text" cols="2">{{v.Grade}}</td>
+            </tr>
+          </template>
+        </tbody>
+        
+      </table>
+
+  <template   v-for="(v,index) in gpa">
+
+      <div  class="textdown" v-if="(v.EduYearTH == year && v.EduTerm == term)" :key="index"> 
+     
 
 
-    <tbody v-else>
-      <template v-for="(v ,index) in grade2">
-      <tr v-if="(v.EduYearTH == year && v.EduTerm == term)" :key="index" class ="texttd" id="test1">
-        <td  class="text1" cols="7">{{v.SubjectNameEN}}</td>
-        <td class="text" cols="3">{{v.SubjectCode}}</td>
-        <td class="text" cols="2">{{v.Grade}}</td>
-      </tr>
-       </template>
-       
-         </tbody>
-         
+        <div class="row">
+          <div class="col-10" style="margin-left:10px; margin-top:10px">SEMESTER CREDITS:</div>
+          <div lass="col-2" style="margin-top:10px">{{v.SemesterCredit}}</div>
+        </div>
+        <div class="row">
+          <div class="col-10" style="margin-left:10px; margin-top:5px">CUMULATIVE CREDITS:</div>
+          <div style="margin-top:5px">{{v.CumulativeCredit}}</div>
+        </div>
 
-      
+        <div class="row">
+          <div class="col-10" style="margin-left:10px; margin-top:5px">SEMESTER GRADE POINT AVERAGE CREDITS:</div>
+          <div style="margin-top:5px">{{v.SemesterPoint}}</div>
+        </div>
 
+        <div class="row">
+          <div class="col-10" style="margin-left:10px; margin-top:5px">CUMULATIVE GRADE POINT AVERAGE CREDITS:</div>
+          <div style="margin-top:5px">{{v.CumulativePoint}}</div>
+        </div>
+        <div class="row">
+          <div class="col-10" style="margin-left:10px; margin-top:5px">SEMESTER GRADE POINT AVERAGE:</div>
+          <div style="margin-top:5px">{{v.SemesterGPA}}</div>
+        </div>
+        <div class="row">
+          <div class="col-10" style="margin-left:10px; margin-top:5px">CUMULATIVE GRADE POINT AVERAGE:</div>
+          <div style="margin-top:5px">{{v.CumulativeGPA}}</div>
+        </div>
+
+        <div class="row">
+          <div class="col-10" style="margin-left:10px; margin-top:5px">ACADEMIC STATUS: </div>
+          <div  style="color:LightSeaGreen; margin-top:5px">{{v.Status}}</div>
+        </div> 
+
+      </div>
+</template>
+
+
+
+    </div>
     
-   
-
-  
-</table>
-</div>
-
   </div>
-
-
 </template>
 
 <script scope>
@@ -77,43 +119,48 @@ export default {
       year: this.$route.params.year,
       term: this.$route.params.term,
       grade: [],
-      grade2 :'',
-      showyear:''
+      grade2: "",
+      showyear: "",
+      gpa:""
     };
   },
   async created() {
     console.log("created");
-   
-    
+
     this.getStudent();
   },
 
   methods: {
     async getStudent() {
       let res = await this.$http.get("/grade/" + this.id);
+       let res2 = await this.$http.get("/gpa/" + this.id);
 
-      document.getElementById("myDiv").setAttribute("style", "display:block , weight:100%");
+      document
+        .getElementById("myDiv")
+        .setAttribute("style", "display:block , weight:100%");
       document.getElementById("loder").setAttribute("style", "display:none");
 
-      this.grade = res.data.data;
-      this.grade2 = this.grade.sort((a,b) =>(a.EduYearTH > b.EduYearTH ? 1:-1));
-      if(this.year == 0 && this.term == 0){
 
-          this.showyear =  "All Semester/Year";
-      }else{
-         this.showyear =  this.term+"/"+this.year;
+    this.gpa = res2.data.data;
+    this.grade = res.data.data;
+
+      this.grade2 = this.grade.sort((a, b) =>
+        a.EduYearTH > b.EduYearTH ? 1 : -1
+      );
+      if (this.year == 0 && this.term == 0) {
+        this.showyear = "All Semester/Year";
+      } else {
+        this.showyear = this.term + "/" + this.year;
       }
-      
-   
+
       console.log();
-    },
-   
+    }
   }
 };
 </script>
 
 <style scoped>
-p{
+p {
   font-size: 15px;
   font-weight: 500;
 }
@@ -186,26 +233,30 @@ body {
 p {
   font-size: 15px;
 }
-.aaa{
-   font-weight: 700;
-   text-align: center;
-   
+.aaa {
+  font-weight: 700;
+  text-align: center;
 }
-.text{
+.text {
   text-align: center;
   font-size: 16px;
 }
-.text1{
-  
+.text1 {
   font-size: 15px;
 }
-.texthd{
+.texthd {
   font-weight: bolder;
-  
 }
-.aaa1{
-   font-weight: 700;
+.aaa1 {
+  font-weight: 700;
 }
+.textdown{
+  background-color:#00386b;
+  color: white;
+ padding-bottom: 20px;
 
-
+}
+.table{
+  margin: 0;
+}
 </style>

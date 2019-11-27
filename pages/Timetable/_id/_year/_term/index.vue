@@ -29,8 +29,16 @@
           >
             <div>
               <div :style="index.styletext2" :class="index.row">
-                <div v-bind:class="index.colLeft" style="text-align:center;"><p>{{index.subjectname}}</p><p>{{index.subjectcode}}</p>{{index.subjectroom}}</div>
-                <div v-bind:class="index.colRight"><p>{{index.subjectname2}}</p><p>{{index.subjectcode2}}</p>{{index.subjectroom2}}</div>
+                <div v-bind:class="index.colLeft" style="text-align:center;">
+                  <p>{{index.subjectname}}</p>
+                  <p>{{index.subjectcode}}</p>
+                  {{index.subjectroom}}
+                </div>
+                <div v-bind:class="index.colRight">
+                  <p>{{index.subjectname2}}</p>
+                  <p>{{index.subjectcode2}}</p>
+                  {{index.subjectroom2}}
+                </div>
               </div>
             </div>
           </td>
@@ -45,8 +53,16 @@
             style="height:120px; width:195px ;"
           >
             <div :style="index.styletext2" :class="index.row">
-                <div v-bind:class="index.colLeft" style="text-align:center;"><p>{{index.subjectname}}</p><p>{{index.subjectcode}}</p>{{index.subjectroom}}</div>
-                <div v-bind:class="index.colRight"><p>{{index.subjectname2}}</p><p>{{index.subjectcode2}}</p>{{index.subjectroom2}}</div>
+              <div v-bind:class="index.colLeft" style="text-align:center;">
+                <p>{{index.subjectname}}</p>
+                <p>{{index.subjectcode}}</p>
+                {{index.subjectroom}}
+              </div>
+              <div v-bind:class="index.colRight">
+                <p>{{index.subjectname2}}</p>
+                <p>{{index.subjectcode2}}</p>
+                {{index.subjectroom2}}
+              </div>
             </div>
           </td>
         </tr>
@@ -60,8 +76,16 @@
             style="height:120px; width:195px ;"
           >
             <div :style="index.styletext2" :class="index.row">
-                <div v-bind:class="index.colLeft" style="text-align:center;"><p>{{index.subjectname}}</p><p>{{index.subjectcode}}</p>{{index.subjectroom}}</div>
-                <div v-bind:class="index.colRight"><p>{{index.subjectname2}}</p><p>{{index.subjectcode2}}</p>{{index.subjectroom2}}</div>
+              <div v-bind:class="index.colLeft" style="text-align:center;">
+                <p>{{index.subjectname}}</p>
+                <p>{{index.subjectcode}}</p>
+                {{index.subjectroom}}
+              </div>
+              <div v-bind:class="index.colRight">
+                <p>{{index.subjectname2}}</p>
+                <p>{{index.subjectcode2}}</p>
+                {{index.subjectroom2}}
+              </div>
             </div>
           </td>
         </tr>
@@ -75,8 +99,16 @@
             style="height:120px; width:195px ;"
           >
             <div :style="index.styletext2" :class="index.row">
-                <div v-bind:class="index.colLeft" style="text-align:center;"><p>{{index.subjectname}}</p><p>{{index.subjectcode}}</p>{{index.subjectroom}}</div>
-                <div v-bind:class="index.colRight"><p>{{index.subjectname2}}</p><p>{{index.subjectcode2}}</p>{{index.subjectroom2}}</div>
+              <div v-bind:class="index.colLeft" style="text-align:center;">
+                <p>{{index.subjectname}}</p>
+                <p>{{index.subjectcode}}</p>
+                {{index.subjectroom}}
+              </div>
+              <div v-bind:class="index.colRight">
+                <p>{{index.subjectname2}}</p>
+                <p>{{index.subjectcode2}}</p>
+                {{index.subjectroom2}}
+              </div>
             </div>
           </td>
         </tr>
@@ -90,8 +122,16 @@
             style="height:120px; width:195px ;"
           >
             <div :style="index.styletext2" :class="index.row">
-             <div v-bind:class="index.colLeft" style="text-align:center;"><p>{{index.subjectname}}</p><p>{{index.subjectcode}}</p>{{index.subjectroom}}</div>
-             <div v-bind:class="index.colRight"><p>{{index.subjectname2}}</p><p>{{index.subjectcode2}}</p>{{index.subjectroom2}}</div>
+              <div v-bind:class="index.colLeft" style="text-align:center;">
+                <p>{{index.subjectname}}</p>
+                <p>{{index.subjectcode}}</p>
+                {{index.subjectroom}}
+              </div>
+              <div v-bind:class="index.colRight">
+                <p>{{index.subjectname2}}</p>
+                <p>{{index.subjectcode2}}</p>
+                {{index.subjectroom2}}
+              </div>
             </div>
           </td>
         </tr>
@@ -105,8 +145,16 @@
             style="height:120px; width:195px ;"
           >
             <div :style="index.styletext2" :class="index.row">
-             <div v-bind:class="index.colLeft" style="text-align:center;"><p>{{index.subjectname}}</p><p>{{index.subjectcode}}</p>{{index.subjectroom}}</div>
-             <div v-bind:class="index.colRight"><p>{{index.subjectname2}}</p><p>{{index.subjectcode2}}</p>{{index.subjectroom2}}</div>
+              <div v-bind:class="index.colLeft" style="text-align:center;">
+                <p>{{index.subjectname}}</p>
+                <p>{{index.subjectcode}}</p>
+                {{index.subjectroom}}
+              </div>
+              <div v-bind:class="index.colRight">
+                <p>{{index.subjectname2}}</p>
+                <p>{{index.subjectcode2}}</p>
+                {{index.subjectroom2}}
+              </div>
             </div>
           </td>
         </tr>
@@ -120,128 +168,17 @@
 export default {
   data() {
     return {
-      DayArr: ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
-      dayTime: [
-        {
-          Day: "MON",
-          TimeStart: "10.30",
-          TimeEnd: "12.30",
-          SubjectCode: "977-372",
-          SubjectName: "SOFTWARE CONSTRUCTION&MAIN",
-          ClassRoom: "5210"
-        },
-        {
-          Day: "MON",
-          TimeStart: "13.30",
-          TimeEnd: "15.30",
-          SubjectCode: "977-374",
-          SubjectName: "SW VERIFICATION &VALIDATION",
-          ClassRoom: "5210"
-        },
-        {
-          Day: "TUE",
-          TimeStart: "08.30",
-          TimeEnd: "10.30",
-          SubjectCode: "140-452",
-          SubjectName: "DATA MINING",
-          ClassRoom: "5210"
-        },
-        {
-          Day: "TUE",
-          TimeStart: "10.30",
-          TimeEnd: "12.30",
-          SubjectCode: "977-374",
-          SubjectName: "SW VERIFICATION &VALIDATION",
-          ClassRoom: "5210"
-        },
-        {
-          Day: "TUE",
-          TimeStart: "13.30",
-          TimeEnd: "16.30",
-          SubjectCode: "140-461",
-          SubjectName: "INTRO TO GAME DESIGN&DEVELOP",
-          ClassRoom: "5210"
-        },
-        {
-          Day: "TUE",
-          TimeStart: "16.30",
-          TimeEnd: "18.30",
-          SubjectCode: "140-461",
-          SubjectName: "INTRO TO GAME DESIGN&DEVELOP",
-          ClassRoom: "5210"
-        },
-        {
-          Day: "WED",
-          TimeStart: "08.30",
-          TimeEnd: "10.30",
-          SubjectCode: "975-300",
-          SubjectName: "ASEAN STUDIES",
-          ClassRoom: "5210"
-        },
-        {
-          Day: "THU",
-          TimeStart: "08.30",
-          TimeEnd: "10.30",
-          SubjectCode: "140-452",
-          SubjectName: "DATA MINING",
-          ClassRoom: "5210"
-        },
-        {
-          Day: "THU",
-          TimeStart: "13.30",
-          TimeEnd: "15.00",
-          SubjectCode: "977-372",
-          SubjectName: "SOFTWARE CONSTRUCTION&MAIN",
-          ClassRoom: "5210"
-        },
-        {
-          Day: "THU",
-          TimeStart: "15.00",
-          TimeEnd: "17.30",
-          SubjectCode: "977-372",
-          SubjectName: "SOFTWARE CONSTRUCTION&MAIN",
-          ClassRoom: "5210"
-        },
-        {
-          Day: "FRI",
-          TimeStart: "08.30",
-          TimeEnd: "10.30",
-          SubjectCode: "975-300",
-          SubjectName: "ASEAN STUDIES",
-          ClassRoom: "5210"
-        },
-        {
-          Day: "FRI",
-          TimeStart: "13.30",
-          TimeEnd: "15.30",
-          SubjectCode: "140-461",
-          SubjectName: "INTRO TO GAME DESIGN&DEVELOP",
-          ClassRoom: "5210"
-        },
-        {
-          Day: "SAT",
-          TimeStart: "09.00",
-          TimeEnd: "12.00",
-          SubjectCode: "976-241",
-          SubjectName: "SOFTWARE PROCESS IMPROVE",
-          ClassRoom: "5210"
-        },
-        {
-          Day: "SAT",
-          TimeStart: "13.00",
-          TimeEnd: "16.00",
-          SubjectCode: "976-241",
-          SubjectName: "SOFTWARE PROCESS IMPROVE",
-          ClassRoom: "5210"
-        }
-      ],
+      id: this.$route.params.id,
+      year: this.$route.params.year,
+      term: this.$route.params.term,
+      DayArr: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      dayTime: [],
       SubjectMon: ["", "", "", "", "", "", "", "", "", "", "", ""],
       SubjectTue: ["", "", "", "", "", "", "", "", "", "", "", ""],
       SubjectWed: ["", "", "", "", "", "", "", "", "", "", "", ""],
       SubjectThu: ["", "", "", "", "", "", "", "", "", "", "", ""],
       SubjectFri: ["", "", "", "", "", "", "", "", "", "", "", ""],
       SubjectSat: ["", "", "", "", "", "", "", "", "", "", "", ""],
-
       prevetimeEnd: "",
       preveDay: "",
       preveColspan: 0,
@@ -257,94 +194,104 @@ export default {
     };
   },
   methods: {
-      async getStudent() {
-      let res = await this.$http.get("/classschedule/" + this.id);
-      this.grade = res.data.data;
-     
-    
-      
+    async getStudent() {
    
-      console.log();
+          let res = await this.$http.get(
+        "/classschedule/" + this.id + "/" + this.year + "/" + this.term
+      );
+      this.dayTime= res.data.data ;
+          
+  console.log(JSON.stringify( this.dayTime));
+  this.checktimestart();
+
     },
     checktimestart() {
       let num = 0;
 
       this.dayTime.forEach(element => {
-        if (element.TimeStart >= 8.0 && element.TimeStart < 9.0) {
+        if (element.From >= "08:00" && element.From < "09:00") {
           num = 0;
-        } else if (element.TimeStart >= 9.0 && element.TimeStart < 10.0) {
+        } else if (element.From >= "9.00" && element.From < "10.00") {
           num = 1;
-        } else if (element.TimeStart >= 10.0 && element.TimeStart < 11.0) {
+        } else if (element.From >= "10:00" && element.From < "11:00") {
           num = 2;
-        } else if (element.TimeStart >= 11.0 && element.TimeStart < 12.0) {
+        } else if (element.From >= "11:00" && element.From < "12:00") {
           num = 3;
-        } else if (element.TimeStart >= 12.0 && element.TimeStart < 13.0) {
+        } else if (element.From >= "12:00" && element.From < "13:00") {
           num = 4;
-        } else if (element.TimeStart >= 13.0 && element.TimeStart < 14.0) {
+        } else if (element.From >= "13:00" && element.From < "14:00") {
           num = 5;
-        } else if (element.TimeStart >= 14.0 && element.TimeStart < 15.0) {
+        } else if (element.From >= "14:00" && element.From < "15:00") {
           num = 6;
-        } else if (element.TimeStart >= 15.0 && element.TimeStart < 16.0) {
+        } else if (element.From >= "15:00" && element.From < "16:00") {
           num = 7;
-        } else if (element.TimeStart >= 16.0 && element.TimeStart < 17.0) {
+        } else if (element.From >= "16:00" && element.From < "17:00") {
           num = 8;
-        } else if (element.TimeStart >= 17.0 && element.TimeStart < 18.0) {
+        } else if (element.From >= "17:00" && element.From < "18:00") {
           num = 9;
-        } else if (element.TimeStart >= 18.0 && element.TimeStart < 19.0) {
+        } else if (element.From>= "18:00" && element.From < "19:00") {
           num = 10;
-        } else if (element.TimeStart >= 19.0 && element.TimeStart < 20.0) {
+        } else if (element.From >= "19:00" && element.From < "20:00") {
           num = 11;
         }
         let timeends;
 
-        if (element.TimeEnd > "20.00") {
+        if (element.To > "20.00") {
           timeends = "20.00";
         } else {
-          timeends = element.TimeEnd;
+          timeends = element.To;
         }
 
         this.checktimeend(
           num,
           timeends,
-          element.TimeStart,
+          element.From,
           element.Day,
-          element.SubjectName,
+          element.SubjectNameEN,
           element.SubjectCode,
           element
         );
 
-        console.log(num, element.TimeEnd);
+        console.log(num, element.From);
       });
     },
 
-    checktimeend(count, TimeEnd, TimeStart, Day, SubjectName, SubjectCode, subjectElement) {
+    checktimeend(
+      count,
+      TimeEnd,
+      TimeStart,
+      Day,
+      SubjectName,
+      SubjectCode,
+      subjectElement
+    ) {
       let num = 0;
       let colspan = 0;
 
       if (TimeEnd > 8.0 && TimeEnd <= 9.0) {
         num = 0;
-      } else if (TimeEnd > 9.0 && TimeEnd <= 10.0) {
-        num = 1;
-      } else if (TimeEnd > 10.0 && TimeEnd <= 11.0) {
-        num = 2;
-      } else if (TimeEnd > 11.0 && TimeEnd <= 12.0) {
-        num = 3;
-      } else if (TimeEnd > 12.0 && TimeEnd <= 13.0) {
-        num = 4;
-      } else if (TimeEnd > 13.0 && TimeEnd <= 14.0) {
-        num = 5;
-      } else if (TimeEnd > 14.0 && TimeEnd <= 15.0) {
-        num = 6;
-      } else if (TimeEnd > 15.0 && TimeEnd <= 16.0) {
-        num = 7;
-      } else if (TimeEnd > 16.0 && TimeEnd <= 17.0) {
-        num = 8;
-      } else if (TimeEnd > 17.0 && TimeEnd <= 18.0) {
-        num = 9;
-      } else if (TimeEnd > 18.0 && TimeEnd <= 19.0) {
-        num = 10;
-      } else if (TimeEnd > 19.0 && TimeEnd <= 20.0) {
-        num = 11;
+        } else if (TimeEnd > "9.00" && TimeEnd <= "10.00") {
+          num = 1;
+        } else if (TimeEnd > "10:00" && TimeEnd <= "11:00") {
+          num = 2;
+        } else if (TimeEnd > "11:00" && TimeEnd <= "12:00") {
+          num = 3;
+        } else if (TimeEnd > "12:00" && TimeEnd <= "13:00") {
+          num = 4;
+        } else if (TimeEnd > "13:00" && TimeEnd <= "14:00") {
+          num = 5;
+        } else if (TimeEnd > "14:00" && TimeEnd <= "15:00") {
+          num = 6;
+        } else if (TimeEnd > "15:00" && TimeEnd <= "16:00") {
+          num = 7;
+        } else if (TimeEnd > "16:00" && TimeEnd <= "17:00") {
+          num = 8;
+        } else if (TimeEnd > "17:00" && TimeEnd <= "18:00") {
+          num = 9;
+        } else if (TimeEnd > "18:00" && TimeEnd <= "19:00") {
+          num = 10;
+        } else if (TimeEnd > "19:00" && TimeEnd <= "20:00") {
+          num = 11;
       }
       console.log("timeend" + num + "-" + count);
 
@@ -376,7 +323,11 @@ export default {
       let sumtimez = TimeEnd - TimeStart;
       let timestart = TimeStart.slice(-2);
       // let timeend = Timeend.slice(-2);
-      if (this.prevetimeEnd == TimeStart &&this.preveDay == Day &&timestart == 30) {
+      if (
+        this.prevetimeEnd == TimeStart &&
+        this.preveDay == Day &&
+        timestart == 30
+      ) {
         result = this.preveColspan + colspan + 1;
       } else {
         result = colspan + 1;
@@ -392,7 +343,7 @@ export default {
       //  }
       this.indexpos += count - this.indexuse;
 
-      if (Day == "MON") {
+      if (Day == "Mon") {
         let namesj = SubjectName;
         let styletext = this.createstyle(
           TimeStart,
@@ -404,9 +355,15 @@ export default {
           sumtimez,
           SubjectCode
         );
-       this.inputInfoToSubject(this.SubjectMon,this.indexpos,result,styletext,subjectElement)
-       this.popArray(this.SubjectMon,colspan)
-      } else if (Day == "TUE") {
+        this.inputInfoToSubject(
+          this.SubjectMon,
+          this.indexpos,
+          result,
+          styletext,
+          subjectElement
+        );
+        this.popArray(this.SubjectMon, colspan);
+      } else if (Day == "Tue") {
         let namesj = SubjectName;
         let styletext = this.createstyle(
           TimeStart,
@@ -418,9 +375,15 @@ export default {
           sumtimez,
           SubjectCode
         );
-        this.inputInfoToSubject(this.SubjectTue,this.indexpos,result,styletext,subjectElement)
-        this.popArray(this.SubjectTue,colspan)
-      } else if (Day == "WED") {
+        this.inputInfoToSubject(
+          this.SubjectTue,
+          this.indexpos,
+          result,
+          styletext,
+          subjectElement
+        );
+        this.popArray(this.SubjectTue, colspan);
+      } else if (Day == "Wed") {
         let namesj = SubjectName;
         let styletext = this.createstyle(
           TimeStart,
@@ -432,9 +395,15 @@ export default {
           sumtimez,
           SubjectCode
         );
-        this.inputInfoToSubject(this.SubjectWed,this.indexpos,result,styletext,subjectElement)
-        this.popArray(this.SubjectWed,colspan)
-      } else if (Day == "THU") {
+        this.inputInfoToSubject(
+          this.SubjectWed,
+          this.indexpos,
+          result,
+          styletext,
+          subjectElement
+        );
+        this.popArray(this.SubjectWed, colspan);
+      } else if (Day == "Thu") {
         let namesj = SubjectName;
         let styletext = this.createstyle(
           TimeStart,
@@ -446,9 +415,15 @@ export default {
           sumtimez,
           SubjectCode
         );
-        this.inputInfoToSubject(this.SubjectThu,this.indexpos,result,styletext,subjectElement)
-        this.popArray(this.SubjectThu,colspan)
-      } else if (Day == "FRI") {
+        this.inputInfoToSubject(
+          this.SubjectThu,
+          this.indexpos,
+          result,
+          styletext,
+          subjectElement
+        );
+        this.popArray(this.SubjectThu, colspan);
+      } else if (Day == "Fri") {
         let namesj = SubjectName;
         let styletext = this.createstyle(
           TimeStart,
@@ -460,9 +435,15 @@ export default {
           sumtimez,
           SubjectCode
         );
-         this.inputInfoToSubject(this.SubjectFri,this.indexpos,result,styletext,subjectElement)
-         this.popArray(this.SubjectFri,colspan)
-      } else if (Day == "SAT") {
+        this.inputInfoToSubject(
+          this.SubjectFri,
+          this.indexpos,
+          result,
+          styletext,
+          subjectElement
+        );
+        this.popArray(this.SubjectFri, colspan);
+      } else if (Day == "Sat") {
         let namesj = SubjectName;
         let styletext = this.createstyle(
           TimeStart,
@@ -474,36 +455,47 @@ export default {
           sumtimez,
           SubjectCode
         );
-         this.inputInfoToSubject(this.SubjectSat,this.indexpos,result,styletext,subjectElement)
-         this.popArray(this.SubjectSat,colspan)
+        this.inputInfoToSubject(
+          this.SubjectSat,
+          this.indexpos,
+          result,
+          styletext,
+          subjectElement
+        );
+        this.popArray(this.SubjectSat, colspan);
       }
       this.indexuse = count + colspan;
       this.prevetimeEnd = TimeEnd;
       this.preveDay = Day;
       this.preveColspan = colspan;
       this.prevetimeStart = TimeStart;
-      this.prevSubjectElement = subjectElement
+      this.prevSubjectElement = subjectElement;
       this.sumtime = sumtimez;
-
     },
-    inputInfoToSubject(SubjectDay,indexpos,result,styletext,subjectElement){
+    inputInfoToSubject(
+      SubjectDay,
+      indexpos,
+      result,
+      styletext,
+      subjectElement
+    ) {
       SubjectDay[indexpos] = {
-          colspan: result,
-          style: styletext.style,
-          styletext2: styletext.text,
-          subjectname: subjectElement.SubjectName,
-          subjectcode: subjectElement.SubjectCode,
-          subjectroom: subjectElement.ClassRoom,
-          subjectname2: null,
-          subjectcode2: null,
-          subjectroom2: null,
-          colLeft: styletext.colLeft,
-          colRight: styletext.colRight
-      }
+        colspan: result,
+        style: styletext.style,
+        styletext2: styletext.text,
+        subjectname: subjectElement.SubjectName,
+        subjectcode: subjectElement.SubjectCode,
+        subjectroom: subjectElement.ClassRoom,
+        subjectname2: null,
+        subjectcode2: null,
+        subjectroom2: null,
+        colLeft: styletext.colLeft,
+        colRight: styletext.colRight
+      };
     },
-    popArray(nameArray,colspan){
-      let array = nameArray
-      for(let i =0;i<colspan;i++){
+    popArray(nameArray, colspan) {
+      let array = nameArray;
+      for (let i = 0; i < colspan; i++) {
         array.pop();
       }
     },
@@ -604,7 +596,8 @@ export default {
     }
   },
   async created() {
-    this.checktimestart();
+    
+    this.getStudent();
   }
 };
 </script>
