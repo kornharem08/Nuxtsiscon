@@ -23,11 +23,9 @@
     </div>
 
     <div style="display : none; " id="myDiv">
-
-       <div
+      <div
         style="background-color:#00386b; color:white; height:40px; font-size:18px; font-weight:700;  margin: 0 auto;  display: block; padding:5px;"
       >Grade Result : {{showyear}}</div>
-
 
       <table class="table table-striped table-borderless">
         <tr>
@@ -36,38 +34,35 @@
           <td class="aaa" style="color : black;">GRADE</td>
         </tr>
 
+        <template v-if="this.year == 0 &&  this.term == 0">
+          <template v-for="(x,index1) in checkterm">
+            <tbody :key="index1">
+              <tr style="background-color:#00386b; margin-top:10px; border-top: 7px solid white;">
+                <td
+                  colspan="2"
+                  style="color:white; font-weight: bolder;"
+                >Grade Result : {{x.slice(5)+"/"+x.slice(0,4)}}</td>
 
+                <td style="background-color:#00386b; margin-top:10px; border-top: 7px solid white;"></td>
+              </tr>
+              <!-- <div v-if="x.slice(0,4) && x.slice(5)" :key="index1"> -->
+              <template v-for="(v,index) in grade2">
+                <tr
+                  :key="index"
+                  class="texttd"
+                  id="test1"
+                  v-if="v.EduYearTH == x.slice(0,4) && v.EduTerm == x.slice(5)"
+                >
+                  <td class="text1" cols="7">{{v.SubjectNameEN}}</td>
+                  <td class="text" cols="3">{{v.SubjectCode}}</td>
+                  <td class="text" cols="2">{{v.Grade}}</td>
+                </tr>
+              </template>
+            </tbody>
 
-         <template v-if="this.year == 0 &&  this.term == 0">
-           
-     
-       <template v-for="(x,index1) in checkterm" >
-       
-        <tbody :key="index1">
-            <tr style="background-color:#00386b; margin-top:10px; border-top: 7px solid white;">
-            <td colspan="2" style="color:white; font-weight: bolder;">Grade Result : {{x.slice(5)+"/"+x.slice(0,4)}}</td>
-         
-            <td style="background-color:#00386b; margin-top:10px; border-top: 7px solid white;"></td>
-
-        </tr>
-          <!-- <div v-if="x.slice(0,4) && x.slice(5)" :key="index1"> -->
-          <template v-for="(v,index) in grade2" >
-            <tr :key="index" class="texttd" id="test1" v-if="v.EduYearTH == x.slice(0,4) && v.EduTerm == x.slice(5)">
-              <td class="text1" cols="7">{{v.SubjectNameEN}}</td>
-              <td class="text" cols="3">{{v.SubjectCode}}</td>
-              <td class="text" cols="2">{{v.Grade}}</td>
-            </tr>
-
-          </template>
-          
-         
-        
-
-        </tbody> 
-        
-         <template   v-for="(v,index) in gpa">
-            <tbody :key="index"  v-if="v.EduYearTH == x.slice(0,4) && v.EduTerm == x.slice(5)">
-              <!-- <tr  style="margin:0">
+            <template v-for="(v,index) in gpa">
+              <tbody :key="index" v-if="v.EduYearTH == x.slice(0,4) && v.EduTerm == x.slice(5)">
+                <!-- <tr  style="margin:0">
                 <td colspan="3" class="col-10" style="background-color:#61C3E1; font-size: 14px; color:white">
                  <div> SEMESTER CREDITS:  &emsp;{{v.SemesterCredit}}</div>
                 <div> CUMULATIVE CREDITS: &emsp;{{v.CumulativeCredit}}</div>
@@ -77,61 +72,56 @@
                 <div> CUMULATIVE GRADE POINT AVERAGE:  &emsp;{{v.CumulativeGPA}}</div>
                 <div> ACADEMIC STATUS: &emsp; <span style="color:LightSeaGreen">{{v.Status}}</span></div>
                 </td>
-              </tr> -->
-              <tr class="col-10 small" style="background-color:#00386b; color:white">
-                <td colspan="2">SEMESTER CREDITS:</td>
-                <td style="text-align: center;">{{v.SemesterCredit}}</td>
-              </tr>
-              <tr class="col-10 small" style="background-color:#00386b; color:white">
-                <td colspan="2">CUMULATIVE CREDITS:</td>
-                <td style="text-align: center;">{{v.CumulativeCredit}}</td>
-              </tr>
+                </tr>-->
                 <tr class="col-10 small" style="background-color:#00386b; color:white">
-                <td colspan="2">SEMESTER GRADE POINT AVERAGE CREDITS:</td>
-                <td style="text-align: center;">{{v.SemesterPoint}}</td>
-              </tr>
-              <tr class="col-10 small" style="background-color:#00386b; color:white">
-                <td colspan="2">CUMULATIVE GRADE POINT AVERAGE CREDITS:</td>
-                <td style="text-align: center;">{{v.CumulativePoint}}</td>
-              </tr>
-               <tr class="col-10 small" style="background-color:#00386b; color:white">
-                <td colspan="2">SEMESTER GRADE POINT AVERAGE:</td>
-                <td style="text-align: center;">{{v.SemesterGPA}}</td>
-              </tr>
-              <tr class="col-10 small" style="background-color:#00386b; color:white">
-                <td colspan="2">CUMULATIVE GRADE POINT AVERAGE:</td>
-                <td style="text-align: center;">{{v.CumulativeGPA}}</td>
-              </tr>
-              <tr class="col-10 small" style="background-color:#00386b; color:white">
-                <td colspan="2">ACADEMIC STATUS:</td>
-                <td style="text-align: center; color:LightSeaGreen">{{v.Status}}</td>
-              </tr>
-            </tbody>
-            
+                  <td colspan="2">SEMESTER CREDITS:</td>
+                  <td style="text-align: center;">{{v.SemesterCredit}}</td>
+                </tr>
+                <tr class="col-10 small" style="background-color:#00386b; color:white">
+                  <td colspan="2">CUMULATIVE CREDITS:</td>
+                  <td style="text-align: center;">{{v.CumulativeCredit}}</td>
+                </tr>
+                <tr class="col-10 small" style="background-color:#00386b; color:white">
+                  <td colspan="2">SEMESTER GRADE POINT AVERAGE CREDITS:</td>
+                  <td style="text-align: center;">{{v.SemesterPoint}}</td>
+                </tr>
+                <tr class="col-10 small" style="background-color:#00386b; color:white">
+                  <td colspan="2">CUMULATIVE GRADE POINT AVERAGE CREDITS:</td>
+                  <td style="text-align: center;">{{v.CumulativePoint}}</td>
+                </tr>
+                <tr class="col-10 small" style="background-color:#00386b; color:white">
+                  <td colspan="2">SEMESTER GRADE POINT AVERAGE:</td>
+                  <td style="text-align: center;">{{v.SemesterGPA}}</td>
+                </tr>
+                <tr class="col-10 small" style="background-color:#00386b; color:white">
+                  <td colspan="2">CUMULATIVE GRADE POINT AVERAGE:</td>
+                  <td style="text-align: center;">{{v.CumulativeGPA}}</td>
+                </tr>
+                <tr class="col-10 small" style="background-color:#00386b; color:white">
+                  <td colspan="2">ACADEMIC STATUS:</td>
+                  <td style="text-align: center; color:LightSeaGreen">{{v.Status}}</td>
+                </tr>
+              </tbody>
+            </template>
           </template>
         </template>
 
-         
-           </template>
-
-
-<template v-else>
-        
-        <tbody >
-          <template v-for="(v ,index) in grade2">
-            <tr
-              v-if="(v.EduYearTH == year && v.EduTerm == term)"
-              :key="index"
-              class="texttd"
-              id="test1"
-            >
-              <td class="text1" cols="7">{{v.SubjectNameEN}}</td>
-              <td class="text" cols="3">{{v.SubjectCode}}</td>
-              <td class="text" cols="2">{{v.Grade}}</td>
-            </tr>
-          </template>
-        </tbody>
-         <template   v-for="(v,index) in gpa">
+        <template v-else>
+          <tbody>
+            <template v-for="(v ,index) in grade2">
+              <tr
+                v-if="(v.EduYearTH == year && v.EduTerm == term)"
+                :key="index"
+                class="texttd"
+                id="test1"
+              >
+                <td class="text1" cols="7">{{v.SubjectNameEN}}</td>
+                <td class="text" cols="3">{{v.SubjectCode}}</td>
+                <td class="text" cols="2">{{v.Grade}}</td>
+              </tr>
+            </template>
+          </tbody>
+          <template v-for="(v,index) in gpa">
             <tbody :key="index" v-if="(v.EduYearTH == year && v.EduTerm == term)">
               <!-- <tr  style="margin:0">
                 <td colspan="3" class="col-10" style="background-color:#61C3E1; font-size: 14px; color:white">
@@ -143,7 +133,7 @@
                 <div> CUMULATIVE GRADE POINT AVERAGE:  &emsp;{{v.CumulativeGPA}}</div>
                 <div> ACADEMIC STATUS: &emsp; <span style="color:LightSeaGreen">{{v.Status}}</span></div>
                 </td>
-              </tr> -->
+              </tr>-->
               <tr class="col-10 small" style="background-color:#00386b; color:white">
                 <td colspan="2">SEMESTER CREDITS:</td>
                 <td style="text-align: center;">{{v.SemesterCredit}}</td>
@@ -152,7 +142,7 @@
                 <td colspan="2">CUMULATIVE CREDITS:</td>
                 <td style="text-align: center;">{{v.CumulativeCredit}}</td>
               </tr>
-                <tr class="col-10 small" style="background-color:#00386b; color:white">
+              <tr class="col-10 small" style="background-color:#00386b; color:white">
                 <td colspan="2">SEMESTER GRADE POINT AVERAGE CREDITS:</td>
                 <td style="text-align: center;">{{v.SemesterPoint}}</td>
               </tr>
@@ -160,7 +150,7 @@
                 <td colspan="2">CUMULATIVE GRADE POINT AVERAGE CREDITS:</td>
                 <td style="text-align: center;">{{v.CumulativePoint}}</td>
               </tr>
-               <tr class="col-10 small" style="background-color:#00386b; color:white">
+              <tr class="col-10 small" style="background-color:#00386b; color:white">
                 <td colspan="2">SEMESTER GRADE POINT AVERAGE:</td>
                 <td style="text-align: center;">{{v.SemesterGPA}}</td>
               </tr>
@@ -173,20 +163,11 @@
                 <td style="text-align: center; color:LightSeaGreen">{{v.Status}}</td>
               </tr>
             </tbody>
-            
           </template>
-        
         </template>
-        </table>  
-    
+      </table>
 
-
-
-
-
-
-
-  <!-- <template   v-for="(v,index) in gpa">
+      <!-- <template   v-for="(v,index) in gpa">
 
       <div  class="textdown" v-if="(v.EduYearTH == year && v.EduTerm == term)" :key="index"> 
      
@@ -223,12 +204,8 @@
         </div> 
 
       </div>
-</template> -->
-
-
-
+      </template>-->
     </div>
-    
   </div>
 </template>
 
@@ -243,31 +220,30 @@ export default {
       grade: [],
       grade2: "",
       showyear: "",
-      gpa:"",
+      gpa: "",
       text: [],
-      outputArray :[],
-      checkterm:[]
+      outputArray: [],
+      checkterm: []
     };
   },
   async created() {
     console.log("created");
-   
+
     this.getStudent();
   },
 
   methods: {
     async getStudent() {
       let res = await this.$http.get("/grade/" + this.id);
-       let res2 = await this.$http.get("/gpa/" + this.id);
+      let res2 = await this.$http.get("/gpa/" + this.id);
 
       document
         .getElementById("myDiv")
         .setAttribute("style", "display:block , weight:100%");
       document.getElementById("loder").setAttribute("style", "display:none");
 
-
-    this.gpa = res2.data.data;
-    this.grade = res.data.data;
+      this.gpa = res2.data.data;
+      this.grade = res.data.data;
 
       this.grade2 = this.grade.sort((a, b) =>
         a.EduYearTH > b.EduYearTH ? 1 : -1
@@ -279,62 +255,66 @@ export default {
       }
 
       console.log();
-       this.setQuickreply();
+      this.setQuickreply();
     },
 
     groupBy(objectArray, property) {
-    return objectArray.reduce(function (acc, obj) {
+      return objectArray.reduce(function(acc, obj) {
         var key = obj[property];
         if (!acc[key]) {
-            acc[key] = [];
+          acc[key] = [];
         }
         acc[key].push(obj);
         return acc;
-    }, {});
-},
-async  setQuickreply() {
-    var eduyear = this.groupBy(this.grade, 'EduYearTH');
-   
+      }, {});
+    },
+    async setQuickreply() {
+      var eduyear = this.groupBy(this.grade, "EduYearTH");
 
-    for (var i = 0; i < Object.keys(eduyear).length; i++) {
-        var eduterm = this.groupBy(eduyear[`${Object.keys(eduyear)[i]}`], 'EduTerm');
+      for (var i = 0; i < Object.keys(eduyear).length; i++) {
+        var eduterm = this.groupBy(
+          eduyear[`${Object.keys(eduyear)[i]}`],
+          "EduTerm"
+        );
         // console.log(`${Object.keys(eduyear)[i]}/`+Object.keys(eduterm))
         if (Object.keys(eduterm)[0] == 1) {
-            console.log(`${Object.keys(eduyear)[i]}/${Object.keys(eduterm)[0]}`)
-            this.text.push(`${Object.keys(eduyear)[i]}/${Object.keys(eduterm)[0]}`)
+          console.log(`${Object.keys(eduyear)[i]}/${Object.keys(eduterm)[0]}`);
+          this.text.push(
+            `${Object.keys(eduyear)[i]}/${Object.keys(eduterm)[0]}`
+          );
         }
         if (Object.keys(eduterm)[1] == 2) {
-            console.log(`${Object.keys(eduyear)[i]}/` + Object.keys(eduterm)[1])
-            this.text.push(`${Object.keys(eduyear)[i]}/${Object.keys(eduterm)[1]}`)
+          console.log(`${Object.keys(eduyear)[i]}/` + Object.keys(eduterm)[1]);
+          this.text.push(
+            `${Object.keys(eduyear)[i]}/${Object.keys(eduterm)[1]}`
+          );
         }
         if (Object.keys(eduterm)[2] == 3) {
-            console.log(`${Object.keys(eduyear)[i]}/` + Object.keys(eduterm)[2])
-            this.text.push(`${Object.keys(eduyear)[i]}/${Object.keys(eduterm)[2]}`)
+          console.log(`${Object.keys(eduyear)[i]}/` + Object.keys(eduterm)[2]);
+          this.text.push(
+            `${Object.keys(eduyear)[i]}/${Object.keys(eduterm)[2]}`
+          );
         }
+      }
+
+      this.text.forEach(element => {
+        console.log(element);
+      });
+      this.checkterm = this.removewithfilter(this.text);
+      console.log("check term", this.checkterm);
+      // for(let i=0;i<text.length;i++){
+      //     console.log("text:"+text[i])
+      // }
+    },
+    removewithfilter(arr) {
+      let outputArray = arr.filter(function(v, i, self) {
+        // It returns the index of the first
+        // instance of each value
+        return i == self.indexOf(v);
+      });
+
+      return outputArray;
     }
-
-  
-    this.text.forEach(element => {
-        console.log(element)
-    });
-    this.checkterm = this.removewithfilter(this.text)
-     console.log("check term",this.checkterm )
-        // for(let i=0;i<text.length;i++){
-        //     console.log("text:"+text[i])
-        // }
-
-},
-       removewithfilter(arr) { 
-            let outputArray = arr.filter(function(v, i, self) 
-            { 
-                  
-                // It returns the index of the first 
-                // instance of each value 
-                return i == self.indexOf(v); 
-            }); 
-              
-            return outputArray; 
-        } 
   }
 };
 </script>
@@ -430,13 +410,12 @@ p {
 .aaa1 {
   font-weight: 700;
 }
-.textdown{
-  background-color:#00386b;
+.textdown {
+  background-color: #00386b;
   color: white;
- padding-bottom: 20px;
-
+  padding-bottom: 20px;
 }
-.table{
+.table {
   margin: 0;
 }
 </style>

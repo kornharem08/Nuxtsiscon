@@ -1,476 +1,661 @@
-
 <template>
-    <div class="scheduleView">
-      <div class="schedule">
-        <h1>{{ prop1 }}</h1>
-    <table>
-      <tr>
-        <th class="color1">Day</th>
-        <th>8.00-9.00</th>
-        <th>9.00-10.00</th>
-        <th>10.00-11.00</th>
-        <th>11.00-12.00</th>
-        <th>12.00-13.00</th>
-        <th>13.00-14.00</th>
-        <th>14.00-15.00</th>
-        <th>15.00-16.00</th>
-        <th>16.00-17.00</th>
-        <th>17.00-18.00</th>
-        <th>18.00-19.00</th>
-        <th>19.00-20.00</th>
-      </tr>
-
-   <tr v-for="(day,index) in DayArr" :key="day">
-        <td>{{day}}</td>
-
-       <td v-for="(column,colIndex) in colArr[index].length" :key="column" :colspan="colArr[index][colIndex]" :style="styleList[index][colIndex]" ><div class = "text" style="font-size: 12px;" >{{subjectList[index][colIndex].name}}</div>
-       <div class = "text" style="font-size: 12px;" >{{subjectList[index][colIndex].code}}</div>
-       <div class = "text" style="font-size: 12px;" >{{subjectList[index][colIndex].room}}</div>
-       
-       </td> 
-        <!-- {{colArr[index]}} -->
-     
-      </tr>
-       
-    </table>
-    </div>
-     <div class="buttom">
-         <button class="btn btn-primary pl-5 pr-5"  v-on:click="download()">Download PDF</button>
-          <button v-on:click="randomColor()">Random Color</button>
-          <input type="file" name="" id="file-field" value="Click" v-on:change="updatePreview">
-     </div>
-   
-  </div>
-
- 
-</template>
-<script>
-/* eslint-disable */
-function myFunction() {
-  var x = document.getElementById("myFile").value;
-  document.getElementById("demo").innerHTML = x;
-}
-/* eslint-disable */
-</script>
-
-
-<script>
-
-import axios from 'axios'
-import FormData from 'form-data'
-import htmlToImage from 'html-to-image';
-
-export default {
-    
-/* eslint-disable */
-    data(){
-        return {
-            colArr,
-            DayArr,
-            styleList,
-            subjectList
-        }
-    },
-    methods:{
-
-      randomColor: function(){
-        window.location.reload()
-      },
-      download: function(){
-          let data = new FormData();
-          
-          html2canvas(document.querySelector(".schedule")).then(function (canvas){
-
-             // Generate the base64 representation of the canvas
-            var base64image = canvas.toDataURL("image/่jpeg");
-
-            // Split the base64 string in data and contentType
-            var block = base64image.split(";");
-            // Get the content type
-            var mimeType = block[0].split(":")[1];// In this case "image/png"
-            // get the real base64 content of the file
-            var realData = block[1].split(",")[1];// For example:  iVBORw0KGgouqw23....
-
-            // Convert b64 to blob and store it into a variable (with real base64 as value)
-            var canvasBlob = b64toBlob(realData, mimeType);
-
-            // 
-              data.append('file',canvasBlob,'scheduleSIS')
-
-                     axios.post('https://sisconnect-db.herokuapp.com/upload',
-                          data).then(function (response) {
-                              console.log('SUCCESS!!:'+JSON.stringify(response));
-                            })
-                            .catch(function (response) {
-                              console.log('FAILURE!!'+response);
-                            });
-
-          })
- 
-          
-      },updatePreview(e){
-      document.getElementById('file-field').click()
-      var reader , files = e.target.files
-      if(files.length === 0){
-        console.log('Empty')
-      }
-      reader = new FileReader()
-      reader.onload = (e) =>{
-        // this.imagePreview = e.target.result
-        document.querySelector(".schedule").style.backgroundImage = 'url(' + e.target.result + ')';
-        console.log(document.body.style.backgroundimage = 'url(' + e.target.result + ')' )
-      }
-      reader.readAsDataURL(files[0])
-      // console.log(reader.readAsDataURL(files[0]))
-    },
-
-    },
-    props: {
-      prop1: {
-        type: Object,
-        required: true
-      }
-    }
-
-}
-
-
-function b64toBlob(b64Data, contentType, sliceSize) {
-        contentType = contentType || '';
-        sliceSize = sliceSize || 512;
-
-        var byteCharacters = atob(b64Data);
-        var byteArrays = [];
-
-        for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-            var slice = byteCharacters.slice(offset, offset + sliceSize);
-
-            var byteNumbers = new Array(slice.length);
-            for (var i = 0; i < slice.length; i++) {
-                byteNumbers[i] = slice.charCodeAt(i);
-            }
-
-            var byteArray = new Uint8Array(byteNumbers);
-
-            byteArrays.push(byteArray);
-        }
-
-      var blob = new Blob(byteArrays, {type: contentType});
-      return blob;
-}
-
-
- function saveAs(uri, filename) {
-    var link = document.createElement('a');
-    if (typeof link.download === 'string') {
-      link.href = uri;
-      link.download = filename;
-
-      //Firefox requires the link to be in the body
-      document.body.appendChild(link);
-
-      //simulate click
-      link.click();
-
-      //remove the link when done
-      document.body.removeChild(link);
-    } else {
-      window.open(uri);
-    }
-  }
-
-
-var dayTime = [
-  {
-    Day: "TUE",
-    TimeStart: "13.30",
-    TimeEnd: "16.30",
-    SubjectCode: "976-394",
-    SubjectName: "LEGAL&ETHICAL CONSIDER IN IT",
-    ClassRoom: "6310"
-	
-  },
-   {
-    Day: "THU",
-    TimeStart: "09.00",
-    TimeEnd: "12.00",
-    SubjectCode: "976-392",
-    SubjectName: "PRE-COOP EDUCATION",
-    ClassRoom: "6310"
-	
-  },
-  {
-    Day: "FRI",
-    TimeStart: "08.30",
-    TimeEnd: "10.30",
-    SubjectCode: "977-393",
-    SubjectName: "SEMINAR",
-    ClassRoom: "6310"
-	
-  },
-  {
-    Day: "FRI",
-    TimeStart: "15.30",
-    TimeEnd: "18.30",
-    SubjectCode: "977-491",
-    SubjectName: "PROJECT IN SE",
-    ClassRoom: "6310"
-	
-  },
-];
-var posdayTime = 0;
-var DayArr = ['MON','TUE','WED','THU','FRI','SAT','SUN']
-var TimeStart = dayTime[posdayTime].TimeStart;
-var TimeEnd = dayTime[posdayTime].TimeEnd;
-var dayTimeLength = dayTime.length
-let colArr =[[],[],[],[],[],[],[]]
-let styleList =[[],[],[],[],[],[],[]]
-let subjectList = [[],[],[],[],[],[],[]]
-let codeColourList = []
-
-initCreate();
-
-function initCreate(){
-    let checkstarttime 
-    let endtime
-    let checkHalf
-    for(let i =0 ;i< 7;i++){
-
-        
-         for(let j =1;j<14;j++){
-             checkstarttime = checkStartTime()
-             
-            if(checkstarttime == j && dayTimeLength != 0){
-           
-            if(dayTime[posdayTime].Day == DayArr[i]){
-             endtime = checkEndTime(checkstarttime)
-             checkHalf = checkHalfTime(endtime)
-             colArr[i].push(endtime+1)
-             styleList[i].push(checkHalf)
-             subjectList[i].push({name:dayTime[posdayTime].SubjectName,code:dayTime[posdayTime].SubjectCode,room:dayTime[posdayTime].ClassRoom})
-             dayTimeLength--
-             j += endtime
-
-              if(posdayTime < dayTime.length - 1){
-
-                posdayTime += 1
-                TimeStart = dayTime[posdayTime].TimeStart
-                TimeEnd = dayTime[posdayTime].TimeEnd
-
-              }
-
-            }else{
-              posdayTime = 0
-            }
-
-            }else{
-               colArr[i].push(0)
-               styleList[i].push(`border:solid; background-color:rgba(0,0,0,.5); border:solid; height: 120px;width:195px ;`)
-               subjectList[i].push("")
-            }
-
-
-         }
-    }
-   
-    return "Somthing"
-    console.log(colArr)
-}
-
-
-
- function checkHalfTime(col){
-        let color = null
-        codeColourList.forEach(element => {
-
-               if(element.SubjectCode == dayTime[posdayTime].SubjectCode){
-                  color = element.color 
-                  
-               }
-              
-
-        });
-
-        if(color == null){
-          color = getRandomColor()
-          codeColourList.push({SubjectCode:dayTime[posdayTime].SubjectCode,color:color})
-        }
-
-         console.log("codeColourList:"+JSON.stringify(codeColourList))
-
-        // codeColourList.push({test:"test"})
-        // console.log("codeColourList:"+codeColourList)
-        let timeStart = TimeStart.slice(-2)
-        let timeEnd = TimeEnd.slice(-2)
-        let style
-        if(timeStart == 30 && timeEnd == 30){
-            let halfF = 50/(col+1)
-            let halfs = 100-halfF
-            style = ` border:solid; background: linear-gradient(to right, rgba(0,0,0,.5)  ${halfF}%, ${color} ${halfF}%, ${color} ${halfs}%, rgba(0,0,0,.5)  ${halfF}%); height: 50px; `
+  <div class="scheduleView">
+    <div class="schedule">
+      <table border="1" >
+        <tr class="Timetable__time">
+          <th class="Timetable__room"></th>
+          <th style="width:195px; text-align: center; ">08:00-09:00</th>
+          <th style="width:195px; text-align: center; ">09:00-10:00</th>
+          <th style="width:195px; text-align: center; ">10.00-11.00</th>
+          <th style="width:195px; text-align: center; ">11.00-12.00</th>
+          <th style="width:195px; text-align: center; ">12.00-13.00</th>
+          <th style="width:195px; text-align: center; ">13.00-14.00</th>
+          <th style="width:195px; text-align: center; ">14.00-15.00</th>
+          <th style="width:195px; text-align: center; ">15.00-16.00</th>
+          <th style="width:195px; text-align: center; ">16.00-17.00</th>
+          <th style="width:195px; text-align: center; ">17.00-18.00</th>
+          <th style="width:195px; text-align: center; ">18.00-19.00</th>
+          <th style="width:195px; text-align: center; ">19.00-20.00</th>
+        </tr>
+        <tr>
+          <td>Mon</td>
+          <td
+            v-for="index in SubjectMon"
+            :key="index"
+            :colspan="index.colspan"
+            :style="index.style"
             
+          >
+            <div>
+              <div :style="index.styletext2" :class="index.row">
+                <div :style="index.divWidth"></div>
+                <div :style="index.divLeft"><p>{{index.subjectname}}</p><p>{{index.subjectcode}}</p>{{index.subjectroom}}</div>
+                <div :style="index.divRight"><p>{{index.subjectname2}}</p><p>{{index.subjectcode2}}</p>{{index.subjectroom2}}</div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>TUE</td>
+          <td
+            v-for="index in SubjectTue"
+            :key="index"
+            :colspan="index.colspan"
+            :style="index.style"
+            style="height:120px; width:195px ;"
+          >
+            <div :style="index.styletext2" :class="index.row">
+              <div  :style="index.divWidth"></div>
+                <div :style="index.divLeft"><p>{{index.subjectname}}</p><p>{{index.subjectcode}}</p>{{index.subjectroom}}</div>
+                <div :style="index.divRight"><p>{{index.subjectname2}}</p><p>{{index.subjectcode2}}</p>{{index.subjectroom2}}</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>WED</td>
+          <td
+            v-for="index in SubjectWed"
+            :key="index"
+            :colspan="index.colspan"
+            :style="index.style"
+            style="height:120px; width:195px ;"
+          >
+            <div :style="index.styletext2" :class="index.row">
+                 <div :style="index.divWidth"></div>
+                <div :style="index.divLeft"><p>{{index.subjectname}}</p><p>{{index.subjectcode}}</p>{{index.subjectroom}}</div>
+                <div :style="index.divRight"><p>{{index.subjectname2}}</p><p>{{index.subjectcode2}}</p>{{index.subjectroom2}}</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>THU</td>
+          <td
+            v-for="index in SubjectThu"
+            :key="index"
+            :colspan="index.colspan"
+            :style="index.style"
+            style="height:120px; width:195px ;"
+          >
+            <div :style="index.styletext2" :class="index.row">
+                <div :style="index.divWidth"></div>
+                <div :style="index.divLeft"><p>{{index.subjectname}}</p><p>{{index.subjectcode}}</p>{{index.subjectroom}}</div>
+                <div :style="index.divRight"><p>{{index.subjectname2}}</p><p>{{index.subjectcode2}}</p>{{index.subjectroom2}}</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>FRI</td>
+          <td
+            v-for="index in SubjectFri"
+            :key="index"
+            :colspan="index.colspan"
+            :style="index.style"
+            style="height:120px; width:195px ;"
+          >
+            <div :style="index.styletext2" :class="index.row">
+             <div :style="index.divWidth"></div>
+             <div :style="index.divLeft"><p>{{index.subjectname}}</p><p>{{index.subjectcode}}</p>{{index.subjectroom}}</div>
+             <div :style="index.divRight"><p>{{index.subjectname2}}</p><p>{{index.subjectcode2}}</p>{{index.subjectroom2}}</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>SAT</td>
+          <td
+            v-for="index in SubjectSat"
+            :key="index"
+            :colspan="index.colspan"
+            :style="index.style"
+            style="height:120px; width:195px ;"
+          >
+            <div :style="index.styletext2" :class="index.row">
+             <div :style="index.divWidth"></div>
+             <div :style="index.divLeft"><p>{{index.subjectname}}</p><p>{{index.subjectcode}}</p>{{index.subjectroom}}</div>
+             <div :style="index.divRight"><p>{{index.subjectname2}}</p><p>{{index.subjectcode2}}</p>{{index.subjectroom2}}</div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</template>
+
+
+<script>
+export default {
+  data() {
+    return {
+      id: this.$route.params.id,
+      year: this.$route.params.year,
+      term: this.$route.params.term,
+      DayArr: ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
+      dayTime:[],
+      // dayTime: [
+      //   {
+      //     Day: "Mon",
+      //     From: "09:00",
+      //     To: "12:00",
+      //     SubjectCode: "977-372",
+      //     SubjectName: "SOFTWARE CONSTRUCTION&MAIN",
+      //     ClassRoom: "5210"
+      //   },
+        // {
+        //   Day: "MON",
+        //   From: "13.30",
+        //   To: "15.30",
+        //   SubjectCode: "977-374",
+        //   SubjectName: "SW VERIFICATION &VALIDATION",
+        //   ClassRoom: "5210"
+        // },
+        // {
+        //   Day: "TUE",
+        //   From: "08.30",
+        //   To: "10.30",
+        //   SubjectCode: "140-452",
+        //   SubjectName: "SOFTWARE CONSTRUCTION&MAIN",
+        //   ClassRoom: "5210"
+        // },
+        // {
+        //   Day: "TUE",
+        //   From: "10.30",
+        //   To: "12.30",
+        //   SubjectCode: "977-374",
+        //   SubjectName: "SW VERIFICATION &VALIDATION",
+        //   ClassRoom: "5210"
+        // },
+        // {
+        //   Day: "TUE",
+        //   From: "13.30",
+        //   To: "16.30",
+        //   SubjectCode: "140-461",
+        //   SubjectName: "INTRO TO GAME DESIGN&DEVELOP",
+        //   ClassRoom: "5210"
+        // },
+        // {
+        //   Day: "TUE",
+        //   From: "16.30",
+        //   To: "19.30",
+        //   SubjectCode: "140-461",
+        //   SubjectName: "INTRO TO GAME DESIGN&DEVELOP",
+        //   ClassRoom: "5210"
+        // },
+        // {
+        //   Day: "WED",
+        //   From: "08.30",
+        //   To: "10.30",
+        //   SubjectCode: "975-300",
+        //   SubjectName: "ASEAN STUDIES",
+        //   ClassRoom: "5210"
+        // },
+        // {
+        //   Day: "WED",
+        //   From: "10.30",
+        //   To: "12.30",
+        //   SubjectCode: "975-300",
+        //   SubjectName: "ASEAN STUDIES",
+        //   ClassRoom: "5210"
+        // },
+        // {
+        //   Day: "THU",
+        //   From: "08.30",
+        //   To: "10.30",
+        //   SubjectCode: "140-452",
+        //   SubjectName: "DATA MINING",
+        //   ClassRoom: "5210"
+        // },
+        // {
+        //   Day: "THU",
+        //   From: "13.30",
+        //   To: "15.00",
+        //   SubjectCode: "977-372",
+        //   SubjectName: "SOFTWARE CONSTRUCTION&MAIN",
+        //   ClassRoom: "5210"
+        // },
+        // {
+        //   Day: "THU",
+        //   From: "15.00",
+        //   To: "17.30",
+        //   SubjectCode: "977-372",
+        //   SubjectName: "SOFTWARE CONSTRUCTION&MAIN",
+        //   ClassRoom: "5210"
+        // },
+        // {
+        //   Day: "FRI",
+        //   From: "08.30",
+        //   To: "10.30",
+        //   SubjectCode: "975-300",
+        //   SubjectName: "ASEAN STUDIES",
+        //   ClassRoom: "5210"
+        // },
+        // {
+        //   Day: "FRI",
+        //   From: "13.30",
+        //   To: "15.30",
+        //   SubjectCode: "140-461",
+        //   SubjectName: "INTRO TO GAME DESIGN&DEVELOP",
+        //   ClassRoom: "5210"
+        // },
+        // {
+        //   Day: "SAT",
+        //   From: "09.00",
+        //   To: "12.00",
+        //   SubjectCode: "976-241",
+        //   SubjectName: "SOFTWARE PROCESS IMPROVE",
+        //   ClassRoom: "5210"
+        // },
+        // {
+        //   Day: "SAT",
+        //   From: "13.00",
+        //   To: "16.00",
+        //   SubjectCode: "976-241",
+        //   SubjectName: "SOFTWARE PROCESS IMPROVE",
+        //   ClassRoom: "5210"
+        // }
+      // ],
+      SubjectMon: ["", "", "", "", "", "", "", "", "", "", "", ""],
+      SubjectTue: ["", "", "", "", "", "", "", "", "", "", "", ""],
+      SubjectWed: ["", "", "", "", "", "", "", "", "", "", "", ""],
+      SubjectThu: ["", "", "", "", "", "", "", "", "", "", "", ""],
+      SubjectFri: ["", "", "", "", "", "", "", "", "", "", "", ""],
+      SubjectSat: ["", "", "", "", "", "", "", "", "", "", "", ""],
+      prevetimeEnd: "",
+      preveDay: "",
+      preveColspan: 0,
+      prevecount: "",
+      prevetimeStart: 0,
+      prevSubjectElement: null,
+      sumtime: 0,
+      indexuse: 0,
+      indexpos: 0,
+      SaveDay: "",
+      codeColourList: [],
+      colLeft: "3"
+    };
+  },
+  methods: {
+    async getStudent() {
+   
+          let res = await this.$http.get(
+        "/classschedule/" + this.id + "/" + this.year + "/" + this.term
+      );
+      this.dayTime= res.data.data ;
+          
+  // console.log(JSON.stringify( this.dayTime));
+  this.checktimestart();
+    },
+    checktimestart() {
+      let num = 0;
+     this.dayTime.forEach(element => {
+        if (element.From >= "08:00" && element.From < "09:00") {
+          num = 0;
+        } else if (element.From >= "09:00" && element.From < "10:00") {
+          num = 1;
+        } else if (element.From >= "10:00" && element.From < "11:00") {
+          num = 2;
+        } else if (element.From >= "11:00" && element.From < "12:00") {
+          num = 3;
+        } else if (element.From >= "12:00" && element.From < "13:00") {
+          num = 4;
+        } else if (element.From >= "13:00" && element.From < "14:00") {
+          num = 5;
+        } else if (element.From >= "14:00" && element.From < "15:00") {
+          num = 6;
+        } else if (element.From >= "15:00" && element.From < "16:00") {
+          num = 7;
+        } else if (element.From >= "16:00" && element.From < "17:00") {
+          num = 8;
+        } else if (element.From >= "17:00" && element.From < "18:00") {
+          num = 9;
+        } else if (element.From>= "18:00" && element.From < "19:00") {
+          num = 10;
+        } else if (element.From >= "19:00" && element.From < "20:00") {
+          num = 11;
         }
-        else if(timeStart == 30){
-            let halfF = 50/(col+1)
-            style = `border:solid; background-color:red; background: linear-gradient(to right, rgba(0,0,0,.5) ${halfF}%, red ${halfF}%); `;
-        }else if(timeEnd == 30){
-            let halfF = 50/(col+1)
-            style = `border:solid; background-color:red; background: linear-gradient(to left, rgba(0,0,0,.5) ${halfF}%, red ${halfF}%); `;
+        let timeends;
+        if (element.To > "20:00") {
+          timeends = "20:00";
+        } else {
+          timeends = element.To;
         }
-        else{
-            style = `border:solid; background-color:${color}; border:solid;`;
+        this.checktimeend(
+          num,
+          timeends,
+          element.From,
+          element.Day,
+          element.SubjectNameEN,
+          element.SubjectCode,
+          element
+        );
+        console.log(num, element.To);
+      });
+    },
+    checktimeend(count, TimeEnd, TimeStart, Day, SubjectName, SubjectCode, subjectElement) {
+      let num = 0;
+      let colspan = 0;
+    if (TimeEnd > "08:00" && TimeEnd <= "09:00") {
+        num = 0;
+        } else if (TimeEnd > "09:00" && TimeEnd <= "10:00") {
+          num = 1;
+        } else if (TimeEnd > "10:00" && TimeEnd <= "11:00") {
+          num = 2;
+        } else if (TimeEnd > "11:00" && TimeEnd <= "12:00") {
+          num = 3;
+        } else if (TimeEnd > "12:00" && TimeEnd <= "13:00") {
+          num = 4;
+        } else if (TimeEnd > "13:00" && TimeEnd <= "14:00") {
+          num = 5;
+        } else if (TimeEnd > "14:00" && TimeEnd <= "15:00") {
+          num = 6;
+        } else if (TimeEnd > "15:00" && TimeEnd <= "16:00") {
+          num = 7;
+        } else if (TimeEnd > "16:00" && TimeEnd <= "17:00") {
+          num = 8;
+        } else if (TimeEnd > "17:00" && TimeEnd <= "18:00") {
+          num = 9;
+        } else if (TimeEnd > "18:00" && TimeEnd <= "19:00") {
+          num = 10;
+        } else if (TimeEnd > "19:00" && TimeEnd <= "20:00") {
+          num = 11;
+      }
+      console.log("timeend" + num + "-" + count);
+      colspan = num - count;
+      this.checksubject(
+        colspan,
+        TimeStart,
+        TimeEnd,
+        Day,
+        count,
+        SubjectName,
+        SubjectCode,
+        subjectElement
+      );
+    },
+    checksubject(
+      colspan,
+      TimeStart,
+      TimeEnd,
+      Day,
+      count,
+      SubjectName,
+      SubjectCode,
+      subjectElement
+    ) {
+      let result = null;
+      console.log("Precolspan" + this.preveColspan + Day);
+      let sumtimez = TimeEnd.replace(':','.') - TimeStart.replace(':','.') ;
+      let timestart = TimeStart.slice(-2);
+      let subject2 = null
+      let row = null
+      // let timeend = Timeend.slice(-2);
+      if (this.prevetimeEnd == TimeStart &&this.preveDay == Day &&timestart == 30) {
+        result = this.preveColspan + colspan + 1;
+        subject2 = this.prevSubjectElement
+        row = "row"
+      } else {
+        result = colspan + 1;
+      }
+      if (this.preveDay != Day) {
+        this.indexpos = 0;
+        this.indexuse = 0;
+      }
+      //  if(count == 0){
+      //  }
+      this.indexpos += count - this.indexuse;
+      if (Day == "Mon") {
+        let namesj = SubjectName;
+        let styletext = this.createstyle(
+          TimeStart,
+          TimeEnd,
+          colspan,
+          this.prevetimeEnd,
+          this.preveColspan,
+          this.prevetimeStart,
+          sumtimez,
+          SubjectCode,
+          subject2
+        );
+       this.inputInfoToSubject(this.SubjectMon,this.indexpos,result,row,styletext,subjectElement,subject2)
+       this.popArray(this.SubjectMon,colspan)
+      } else if (Day == "Tue") {
+        let namesj = SubjectName;
+        let styletext = this.createstyle(
+          TimeStart,
+          TimeEnd,
+          colspan,
+          this.prevetimeEnd,
+          this.preveColspan,
+          this.prevetimeStart,
+          sumtimez,
+          SubjectCode,
+          subject2
+        );
+        console.log("styletext:"+styletext.style)
+        this.inputInfoToSubject(this.SubjectTue,this.indexpos,result,row,styletext,subjectElement,subject2)
+        this.popArray(this.SubjectTue,colspan)
+      } else if (Day == "Wed") {
+        let namesj = SubjectName;
+        let styletext = this.createstyle(
+          TimeStart,
+          TimeEnd,
+          colspan,
+          this.prevetimeEnd,
+          this.preveColspan,
+          this.prevetimeStart,
+          sumtimez,
+          SubjectCode,
+          subject2
+        );
+        this.inputInfoToSubject(this.SubjectWed,this.indexpos,result,row,styletext,subjectElement,subject2)
+        this.popArray(this.SubjectWed,colspan)
+      } else if (Day == "Thu") {
+        let namesj = SubjectName;
+        let styletext = this.createstyle(
+          TimeStart,
+          TimeEnd,
+          colspan,
+          this.prevetimeEnd,
+          this.preveColspan,
+          this.prevetimeStart,
+          sumtimez,
+          SubjectCode,
+          subject2      
+          );
+        this.inputInfoToSubject(this.SubjectThu,this.indexpos,result,row,styletext,subjectElement,subject2)
+        this.popArray(this.SubjectThu,colspan)
+      } else if (Day == "Fri") {
+        let namesj = SubjectName;
+        let styletext = this.createstyle(
+          TimeStart,
+          TimeEnd,
+          colspan,
+          this.prevetimeEnd,
+          this.preveColspan,
+          this.prevetimeStart,
+          sumtimez,
+          SubjectCode,
+          subject2
+        );
+         this.inputInfoToSubject(this.SubjectFri,this.indexpos,result,row,styletext,subjectElement,subject2)
+         this.popArray(this.SubjectFri,colspan)
+      } else if (Day == "Sat") {
+        let namesj = SubjectName;
+        let styletext = this.createstyle(
+          TimeStart,
+          TimeEnd,
+          colspan,
+          this.prevetimeEnd,
+          this.preveColspan,
+          this.prevetimeStart,
+          sumtimez,
+          SubjectCode,
+          subject2
+        );
+         this.inputInfoToSubject(this.SubjectSat,this.indexpos,result,row,styletext,subjectElement,subject2)
+         this.popArray(this.SubjectSat,colspan)
+      }
+      this.indexuse = count + colspan;
+      this.prevetimeEnd = TimeEnd;
+      this.preveDay = Day;
+      this.preveColspan = colspan;
+      this.prevetimeStart = TimeStart;
+      this.prevSubjectElement = subjectElement
+      this.sumtime = sumtimez;
+    },
+    inputInfoToSubject(SubjectDay,indexpos,result,row,styletext,subjectElement,subject2){
+      let subjectName = null
+      let subjectCode = null
+      let subjectClassRoom = null
+      let subject2Name = null
+      let subject2Code = null
+      let subject2ClassRoom = null
+      if(subject2){
+          subjectName = subject2.SubjectNameEN
+          subjectCode = subject2.SubjectCode
+          subjectClassRoom = subject2.ClassRoom
+          subject2Name = subjectElement.SubjectNameEN
+          subject2Code = subjectElement.SubjectCode
+          subject2ClassRoom = subjectElement.ClassRoom
+      }else{
+          subjectName = subjectElement.SubjectNameEN
+          subjectCode = subjectElement.SubjectCode
+          subjectClassRoom = subjectElement.ClassRoom
+          subject2Name = null
+          subject2Code = null
+          subject2ClassRoom = null
+      }
+      SubjectDay[indexpos] = {
+          colspan: result,
+          style: styletext.style,
+          styletext2: styletext.text,
+          subjectname: subjectName,
+          subjectcode: subjectCode,
+          subjectroom: subjectClassRoom,
+          subjectname2: subject2Name,
+          subjectcode2: subject2Code,
+          subjectroom2: subject2ClassRoom,
+          divLeft: styletext.divLeft,
+          divRight: styletext.divRight,
+          divWidth:styletext.divWidth,
+          row:row
+      }
+    },
+    popArray(nameArray,colspan){
+      let array = nameArray
+      for(let i =0;i<colspan;i++){
+        array.pop();
+      }
+    },
+    createstyle(
+      Timestart,
+      Timeend,
+      colspan,
+      pretimeend,
+      preveColspan,
+      prevetimeStart,
+      sumtime1,
+      SubjectCode,
+      PrevSubjectCode
+    ) {
+      let timestart = Timestart.slice(-2);
+      let timeend = Timeend.slice(-2);
+      let style;
+      let text;
+      let divWidth = "wdith:0px;"
+      let divLeft = `text-align: center;`;
+      let divRight = `text-align: center;`;
+      let time
+      let colors 
+      let culcet
+      let sssaa
+      let widthLeft = (preveColspan * 150) -50
+      let widthRight = (colspan * 150) -70
+      let halfF = 50 / (colspan + 1);
+      let halfs = 100 - halfF;
+      // let row = "null";
+      let color = null;
+      let prevcolor = null;
+      this.codeColourList.forEach(element => {
+        if (pretimeend == Timestart && timestart == 30 && element.SubjectCode == PrevSubjectCode.SubjectCode){
+          prevcolor = element.color
+        } 
+         if (element.SubjectCode == SubjectCode) {
+          color = element.color;
         }
-
-      return style
-
-    }
-
-function checkStartTime() {
-  let num;
-
-  if (TimeStart >= 8.0 && TimeStart < 8.30) {
-    num = 1;
-  } else if (TimeStart >= 8.3 && TimeStart < 9.0) {
-    num = 2;
-  } else if (TimeStart >= 9.0 && TimeStart < 9.30) {
-    num = 3;
-  } else if (TimeStart >= 9.30 && TimeStart < 10.0) {
-    num = 4;
-  } else if (TimeStart >= 10.0 && TimeStart < 10.30) {
-    num = 5;
-  } else if (TimeStart >= 10.30 && TimeStart < 11.0) {
-    num = 6;
-  } else if (TimeStart >= 11.0 && TimeStart < 11.30) {
-    num = 7;
-  } else if (TimeStart >= 11.30 && TimeStart < 12.0) {
-    num = 8;
-    } else if (TimeStart >= 12.0 && TimeStart < 12.3) {
-    num = 9;
-     } else if (TimeStart >= 12.3 && TimeStart < 13.0) {
-    num = 10;
-     } else if (TimeStart >= 13.0 && TimeStart < 13.3) {
-    num = 11;
-    } else if (TimeStart >= 13.3 && TimeStart < 14.0) {
-    num = 12;
-    }else if (TimeStart >= 14.0 && TimeStart < 14.3) {
-    num = 13;
-    }else if (TimeStart >= 14.3 && TimeStart < 15.0) {
-    num = 14;
-    }else if (TimeStart >= 15.0 && TimeStart < 15.3) {
-    num = 15;
-    }else if (TimeStart >= 15.3 && TimeStart < 16.0) {
-    num = 16;
-    }else if (TimeStart >= 16.0 && TimeStart < 16.3) {
-    num = 17;
-    }else if (TimeStart >= 16.3 && TimeStart < 17.0) {
-    num = 18;
-    }
-    else if (TimeStart >= 16.3 && TimeStart < 17.0) {
-    num = 19;
-    }
-    else if (TimeStart >= 17.0 && TimeStart < 17.3) {
-    num = 20;
-    }
-    else if (TimeStart >= 17.3 && TimeStart < 18.0) {
-    num = 21;
-    }
-    else if (TimeStart >= 18.0 && TimeStart < 18.3) {
-    num = 22;
-    }
-    else if (TimeStart >= 18.3 && TimeStart < 19.0) {
-    num = 23;
-    }
-    else if (TimeStart >= 19.0 && TimeStart < 19.3) {
-    num = 24;
-    }
-    else if (TimeStart >= 19.3 && TimeStart < 20.0) {
-    num = 25;
-    }
-  return num;
-}
-
-function checkEndTime(col) {
-  let num;
-  let col2 = 0;
-  if (TimeEnd >= 8.0 && TimeEnd < 8.3) {
-    num = 1;
-  } else if (TimeEnd >= 8.3 && TimeEnd < 9.0) {
-    num = 2;
-  } else if (TimeEnd >= 9.0 && TimeEnd < 9.3) {
-    num = 3;
-  } else if (TimeEnd >= 9.3 && TimeEnd < 10.0) {
-    num = 4;
-  } else if (TimeEnd >= 10.0 && TimeEnd < 10.3) {
-    num = 5;
-  } else if (TimeEnd >= 10.3 && TimeEnd < 11.0) {
-    num = 6;
-  } else if (TimeEnd >= 11.0 && TimeEnd < 11.3) {
-    num = 7;
-  } else if (TimeEnd >= 11.3 && TimeEnd < 12.0) {
-    num = 8;
-    } else if (TimeEnd >= 12.0 && TimeEnd < 12.3) {
-    num = 9;
-     } else if (TimeEnd >= 12.3 && TimeEnd < 13.0) {
-    num = 10;
-     } else if (TimeEnd >= 13.0 && TimeEnd < 13.3) {
-    num = 11;
-    } else if (TimeEnd >= 13.3 && TimeEnd < 14.0) {
-    num = 12;
-    }else if (TimeEnd >= 14.0 && TimeEnd < 14.3) {
-    num = 13;
-    }else if (TimeEnd >= 14.3 && TimeEnd < 15.0) {
-    num = 14;
-    }else if (TimeEnd >= 15.0 && TimeEnd < 15.3) {
-    num = 15;
-    }else if (TimeEnd >= 15.3 && TimeEnd < 16.0) {
-    num = 16;
-    }else if (TimeEnd >= 16.0 && TimeEnd < 16.3) {
-    num = 17;
-    }else if (TimeEnd >= 16.3 && TimeEnd < 17.0) {
-    num = 18;
-    }
-    else if (TimeEnd >= 16.3 && TimeEnd < 17.0) {
-    num = 19;
-    }
-    else if (TimeEnd >= 17.0 && TimeEnd < 17.3) {
-    num = 20;
-    }
-    else if (TimeEnd >= 17.3 && TimeEnd < 18.0) {
-    num = 21;
-    }
-    else if (TimeEnd >= 18.0 && TimeEnd < 18.3) {
-    num = 22;
-    }
-    else if (TimeEnd >= 18.3 && TimeEnd < 19.0) {
-    num = 23;
-    }
-    else if (TimeEnd >= 19.0 && TimeEnd < 19.3) {
-    num = 24;
-    }
-    else if (TimeEnd >= 19.3 && TimeEnd < 20.0) {
-    num = 25;
-    }
-  col2 = num - col;
-
-  return col2;
-}
-
-
- function getRandomColor() {
-            var letters = '0123456789ABCDEF'.split('');
-            var color = '#';
-            for (var i = 0; i < 6; i++ ) {
-                color += letters[Math.floor(Math.random() * 16)];
+      });
+      if (color == null) {
+        color = this.getRandomColor();
+        this.codeColourList.push({ SubjectCode: SubjectCode, color: color });
+      }
+        // if (prevcolor == null){
+        //   prevcolor = this.getRandomColor()
+        //   this.codeColourList.push({ SubjectCode: SubjectCode, color: prevcolor });
+        // }
+      console.log("codeColourList:" + JSON.stringify(this.codeColourList));
+      if (pretimeend == Timestart && timestart == 30) {
+          time = Timeend.replace(':','.') - prevetimeStart.replace(':','.');
+          
+          colors = (this.sumtime * 100) / time;
+          culcet = colors / 10;
+          sssaa = colors - culcet;
+          console.log("sssaa:"+sssaa)
+          halfF = 50 / (colspan + preveColspan + 1);
+          halfs = 100 - halfF;
+          
+            if(prevetimeStart.slice(-2) == 30 && timeend == 30){
+            style = `background: linear-gradient(to right, white  ${halfF}%, ${prevcolor}  ${halfF}%, ${prevcolor} ${sssaa+5.5}% ,${color} ${sssaa}% ,${color} ${halfs}%,white ${halfF}%);  height: 120px;`;
+            text = ` text-align: center; font-size: 12px; color:white;`
+            divLeft = ` text-align: center; width:${widthLeft}px;`
+            divRight = ` text-align: center; width:${widthRight}px;`
+            divWidth = "width:75px;"
+            }else if(prevetimeStart.slice(-2) == 30){
+            style = `background: linear-gradient(to right, white  ${halfF}%,  ${prevcolor} ${halfF}%, ${prevcolor} ${sssaa+colspan+halfF}% ,${color} ${sssaa}%;  height: 120px;`;
+            text = ` text-align: center; font-size: 12px; color:white;`
+            divLeft = ` text-align: center; width:${widthLeft}px;`
+            divRight = ` text-align: center; width:${widthRight}px; margin-left:${sssaa+colspan}px;`
+            divWidth = "width:75px;"
+            }else{
+            style = `background: linear-gradient(to right,${prevcolor}  ${halfF}%, ${prevcolor} ${sssaa+colspan+halfF}% ,${color} ${sssaa}%;  height: 120px;`;
+            text = ` text-align: center; font-size: 12px; color:white;`
+            divLeft = ` text-align: center; width:${widthLeft}px;  margin-left:${sssaa+colspan}px;`
+            divRight = ` text-align: center; width:${widthRight}px; margin-left:${sssaa+colspan+halfF*3}px;`
+            divWidth = "width:0px;"
             }
-            return color;
+            
+        }else if (timestart == 30 && timeend == 30) {
+        
+          style = ` background: linear-gradient(to right, white  ${halfF}%, ${color} ${halfF}%, ${color} ${halfs}%, white  ${halfF}%); height: 120px; `;
+          text = ` text-align: center; font-size: 12px; color:white;`;
+        
+      } else if (timestart == 30) {
+        style = `background-color:red; background: linear-gradient(to right, white ${halfF}%,  ${color} ${halfF}%); height: 120px; `;
+        text = ` text-align: center; font-size: 12px; margin-left:50px; color:white;`;
+      } else if (timeend == 30) {
+        style = ` background-color:${color}; background: linear-gradient(to left, white ${halfF}%,  ${color} ${halfF}%); height: 120px;`;
+        text = `margin-left:65px; width:130px; text-align: center; font-size: 12px; color:white;`;
+      } else {
+        style = `background-color: ${color}; height:120px; width:195px `;
+        text = `text-align: center; font-size: 12px; color:white;`;
+      }
+      return { style, text ,divLeft,divRight,divWidth };
+    },
+    getRandomColor() {
+      var letters = "0123456789ABCDEF".split("");
+      var color = "#";
+      for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+  },
+  async created() {
+    this.getStudent();
   }
-
-
+};
 </script>
 
-
-<style  scoped>
-.text{
-  font-size: 15px;
-  text-align: center;
+<style scoped>
+body{
+ background-image: url("12345.jpg");
 }
 </style>
+  
