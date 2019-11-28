@@ -280,6 +280,7 @@ export default {
           let res = await this.$http.get(
         "/classschedule/" + this.id + "/" + this.year + "/" + this.term
       );
+      
       this.dayTime= res.data.data ;
           
   // console.log(JSON.stringify( this.dayTime));
@@ -397,11 +398,19 @@ export default {
       let timestart = TimeStart.slice(-2);
       let subject2 = null
       let row = null
+      let prevetimeEnd = null
+      let preveColspan = null
+      let prevetimeStart = null 
       // let timeend = Timeend.slice(-2);
       if (this.prevetimeEnd == TimeStart &&this.preveDay == Day &&timestart == 30) {
+        
         result = this.preveColspan + colspan + 1;
         subject2 = this.prevSubjectElement
         row = "row"
+        prevetimeEnd = this.prevetimeEnd
+        preveColspan = this.preveColspan
+        prevetimeStart = this.prevetimeStart
+        
       } else {
         result = colspan + 1;
       }
@@ -422,9 +431,9 @@ export default {
           TimeStart,
           TimeEnd,
           colspan,
-          this.prevetimeEnd,
-          this.preveColspan,
-          this.prevetimeStart,
+          prevetimeEnd,
+          preveColspan,
+          prevetimeStart,
           sumtimez,
           SubjectCode,
           subject2
@@ -437,9 +446,9 @@ export default {
           TimeStart,
           TimeEnd,
           colspan,
-          this.prevetimeEnd,
-          this.preveColspan,
-          this.prevetimeStart,
+          prevetimeEnd,
+          preveColspan,
+          prevetimeStart,
           sumtimez,
           SubjectCode,
           subject2
@@ -453,9 +462,9 @@ export default {
           TimeStart,
           TimeEnd,
           colspan,
-          this.prevetimeEnd,
-          this.preveColspan,
-          this.prevetimeStart,
+          prevetimeEnd,
+          preveColspan,
+          prevetimeStart,
           sumtimez,
           SubjectCode,
           subject2
@@ -468,9 +477,9 @@ export default {
           TimeStart,
           TimeEnd,
           colspan,
-          this.prevetimeEnd,
-          this.preveColspan,
-          this.prevetimeStart,
+          prevetimeEnd,
+          preveColspan,
+          prevetimeStart,
           sumtimez,
           SubjectCode,
           subject2      
@@ -483,9 +492,9 @@ export default {
           TimeStart,
           TimeEnd,
           colspan,
-          this.prevetimeEnd,
-          this.preveColspan,
-          this.prevetimeStart,
+          prevetimeEnd,
+          preveColspan,
+          prevetimeStart,
           sumtimez,
           SubjectCode,
           subject2
@@ -498,9 +507,9 @@ export default {
           TimeStart,
           TimeEnd,
           colspan,
-          this.prevetimeEnd,
-          this.preveColspan,
-          this.prevetimeStart,
+          prevetimeEnd,
+          preveColspan,
+          prevetimeStart,
           sumtimez,
           SubjectCode,
           subject2
@@ -527,14 +536,14 @@ export default {
       if(subject2){
           subjectName = subject2.SubjectNameEN
           subjectCode = subject2.SubjectCode
-          subjectClassRoom = subject2.ClassRoom
+          subjectClassRoom = subject2.RoomName
           subject2Name = subjectElement.SubjectNameEN
           subject2Code = subjectElement.SubjectCode
-          subject2ClassRoom = subjectElement.ClassRoom
+          subject2ClassRoom = subjectElement.RoomName
       }else{
           subjectName = subjectElement.SubjectNameEN
           subjectCode = subjectElement.SubjectCode
-          subjectClassRoom = subjectElement.ClassRoom
+          subjectClassRoom = subjectElement.RoomName
           subject2Name = null
           subject2Code = null
           subject2ClassRoom = null
@@ -637,7 +646,7 @@ export default {
             }else{
             style = `background: linear-gradient(to right,${prevcolor}  ${halfF}%, ${prevcolor} ${sssaa+colspan+halfF}% ,${color} ${sssaa}%;  height: 120px;`;
             text = ` text-align: center; font-size: 12px; color:white;`
-            divLeft = ` text-align: center; width:${widthLeft}px;  margin-left:${sssaa+colspan}px;`
+            divLeft = ` text-align: center; width:${widthLeft}px;`
             divRight = ` text-align: center; width:${widthRight}px; margin-left:${sssaa+colspan+halfF*3}px;`
             divWidth = "width:0px;"
             }

@@ -130,18 +130,10 @@ export default {
       dayTime: [
         {
           Day: "MON",
-          TimeStart: "08.30",
-          TimeEnd: "11.30",
+          TimeStart: "13.30",
+          TimeEnd: "18.00",
           SubjectCode: "140-461",
           SubjectName: "LEGAL AND ETHICAL CONSIDERATIONS",
-          ClassRoom: "5210"
-        },
-        {
-          Day: "MON",
-          TimeStart: "11.30",
-          TimeEnd: "13.30",
-          SubjectCode: "140-461",
-          SubjectName: "INTRO TO GAME",
           ClassRoom: "5210"
         },
         {
