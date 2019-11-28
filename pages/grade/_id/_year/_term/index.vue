@@ -29,7 +29,7 @@
       >Grade Result : {{showyear}}</div>
 
 
-      <table class="table table-striped">
+      <table class="table table-striped table-borderless">
         <tr>
           <td class="aaa1" style="color : black;">SUBJECTNAME</td>
           <td class="aaa" style="color : black;">SUBJECTCODE</td>
@@ -44,10 +44,10 @@
        <template v-for="(x,index1) in checkterm" >
        
         <tbody :key="index1">
-            <tr style="background-color:#00386b; margin-top:10px;">
-            <td style="color:white">Grade Result : {{x.slice(5)+"/"+x.slice(0,4)}}</td>
-            <td></td>
-            <td></td>
+            <tr style="background-color:#00386b; margin-top:10px; border-top: 7px solid white;">
+            <td colspan="2" style="color:white; font-weight: bolder;">Grade Result : {{x.slice(5)+"/"+x.slice(0,4)}}</td>
+         
+            <td style="background-color:#00386b; margin-top:10px; border-top: 7px solid white;"></td>
 
         </tr>
           <!-- <div v-if="x.slice(0,4) && x.slice(5)" :key="index1"> -->
@@ -67,16 +67,44 @@
         
          <template   v-for="(v,index) in gpa">
             <tbody :key="index"  v-if="v.EduYearTH == x.slice(0,4) && v.EduTerm == x.slice(5)">
-              <tr  style="margin:0">
-                <td colspan="3" class="col-10" style="background-color:#00386b; font-size: 14px; color:white">
+              <!-- <tr  style="margin:0">
+                <td colspan="3" class="col-10" style="background-color:#61C3E1; font-size: 14px; color:white">
                  <div> SEMESTER CREDITS:  &emsp;{{v.SemesterCredit}}</div>
                 <div> CUMULATIVE CREDITS: &emsp;{{v.CumulativeCredit}}</div>
                 <div>SEMESTER GRADE POINT AVERAGE CREDITS: &emsp;{{v.SemesterPoint}}</div>
                  <div> CUMULATIVE GRADE POINT AVERAGE CREDITS : &emsp;{{v.CumulativePoint}}</div>
                 <div> SEMESTER GRADE POINT AVERAGE: &emsp;{{v.SemesterGPA}}</div>
                 <div> CUMULATIVE GRADE POINT AVERAGE:  &emsp;{{v.CumulativeGPA}}</div>
-                <div> ACADEMIC STATUS: &emsp;{{v.Status}}</div> 
+                <div> ACADEMIC STATUS: &emsp; <span style="color:LightSeaGreen">{{v.Status}}</span></div>
                 </td>
+              </tr> -->
+              <tr class="col-10 small" style="background-color:#00386b; color:white">
+                <td colspan="2">SEMESTER CREDITS:</td>
+                <td style="text-align: center;">{{v.SemesterCredit}}</td>
+              </tr>
+              <tr class="col-10 small" style="background-color:#00386b; color:white">
+                <td colspan="2">CUMULATIVE CREDITS:</td>
+                <td style="text-align: center;">{{v.CumulativeCredit}}</td>
+              </tr>
+                <tr class="col-10 small" style="background-color:#00386b; color:white">
+                <td colspan="2">SEMESTER GRADE POINT AVERAGE CREDITS:</td>
+                <td style="text-align: center;">{{v.SemesterPoint}}</td>
+              </tr>
+              <tr class="col-10 small" style="background-color:#00386b; color:white">
+                <td colspan="2">CUMULATIVE GRADE POINT AVERAGE CREDITS:</td>
+                <td style="text-align: center;">{{v.CumulativePoint}}</td>
+              </tr>
+               <tr class="col-10 small" style="background-color:#00386b; color:white">
+                <td colspan="2">SEMESTER GRADE POINT AVERAGE:</td>
+                <td style="text-align: center;">{{v.SemesterGPA}}</td>
+              </tr>
+              <tr class="col-10 small" style="background-color:#00386b; color:white">
+                <td colspan="2">CUMULATIVE GRADE POINT AVERAGE:</td>
+                <td style="text-align: center;">{{v.CumulativeGPA}}</td>
+              </tr>
+              <tr class="col-10 small" style="background-color:#00386b; color:white">
+                <td colspan="2">ACADEMIC STATUS:</td>
+                <td style="text-align: center; color:LightSeaGreen">{{v.Status}}</td>
               </tr>
             </tbody>
             
@@ -103,6 +131,50 @@
             </tr>
           </template>
         </tbody>
+         <template   v-for="(v,index) in gpa">
+            <tbody :key="index" v-if="(v.EduYearTH == year && v.EduTerm == term)">
+              <!-- <tr  style="margin:0">
+                <td colspan="3" class="col-10" style="background-color:#61C3E1; font-size: 14px; color:white">
+                 <div> SEMESTER CREDITS:  &emsp;{{v.SemesterCredit}}</div>
+                <div> CUMULATIVE CREDITS: &emsp;{{v.CumulativeCredit}}</div>
+                <div>SEMESTER GRADE POINT AVERAGE CREDITS: &emsp;{{v.SemesterPoint}}</div>
+                 <div> CUMULATIVE GRADE POINT AVERAGE CREDITS : &emsp;{{v.CumulativePoint}}</div>
+                <div> SEMESTER GRADE POINT AVERAGE: &emsp;{{v.SemesterGPA}}</div>
+                <div> CUMULATIVE GRADE POINT AVERAGE:  &emsp;{{v.CumulativeGPA}}</div>
+                <div> ACADEMIC STATUS: &emsp; <span style="color:LightSeaGreen">{{v.Status}}</span></div>
+                </td>
+              </tr> -->
+              <tr class="col-10 small" style="background-color:#00386b; color:white">
+                <td colspan="2">SEMESTER CREDITS:</td>
+                <td style="text-align: center;">{{v.SemesterCredit}}</td>
+              </tr>
+              <tr class="col-10 small" style="background-color:#00386b; color:white">
+                <td colspan="2">CUMULATIVE CREDITS:</td>
+                <td style="text-align: center;">{{v.CumulativeCredit}}</td>
+              </tr>
+                <tr class="col-10 small" style="background-color:#00386b; color:white">
+                <td colspan="2">SEMESTER GRADE POINT AVERAGE CREDITS:</td>
+                <td style="text-align: center;">{{v.SemesterPoint}}</td>
+              </tr>
+              <tr class="col-10 small" style="background-color:#00386b; color:white">
+                <td colspan="2">CUMULATIVE GRADE POINT AVERAGE CREDITS:</td>
+                <td style="text-align: center;">{{v.CumulativePoint}}</td>
+              </tr>
+               <tr class="col-10 small" style="background-color:#00386b; color:white">
+                <td colspan="2">SEMESTER GRADE POINT AVERAGE:</td>
+                <td style="text-align: center;">{{v.SemesterGPA}}</td>
+              </tr>
+              <tr class="col-10 small" style="background-color:#00386b; color:white">
+                <td colspan="2">CUMULATIVE GRADE POINT AVERAGE:</td>
+                <td style="text-align: center;">{{v.CumulativeGPA}}</td>
+              </tr>
+              <tr class="col-10 small" style="background-color:#00386b; color:white">
+                <td colspan="2">ACADEMIC STATUS:</td>
+                <td style="text-align: center; color:LightSeaGreen">{{v.Status}}</td>
+              </tr>
+            </tbody>
+            
+          </template>
         
         </template>
         </table>  
@@ -114,7 +186,7 @@
 
 
 
-  <template   v-for="(v,index) in gpa">
+  <!-- <template   v-for="(v,index) in gpa">
 
       <div  class="textdown" v-if="(v.EduYearTH == year && v.EduTerm == term)" :key="index"> 
      
@@ -151,7 +223,7 @@
         </div> 
 
       </div>
-</template>
+</template> -->
 
 
 
