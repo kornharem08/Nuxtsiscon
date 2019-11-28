@@ -130,64 +130,24 @@ export default {
       dayTime: [
         {
           Day: "MON",
-          TimeStart: "9.00",
-          TimeEnd: "12.00",
-          SubjectCode: "977-372",
-          SubjectName: "SOFTWARE CONSTRUCTION&MAIN",
+          TimeStart: "08.30",
+          TimeEnd: "11.30",
+          SubjectCode: "140-461",
+          SubjectName: "LEGAL AND ETHICAL CONSIDERATIONS",
           ClassRoom: "5210"
         },
         {
           Day: "MON",
-          TimeStart: "13.30",
-          TimeEnd: "15.30",
-          SubjectCode: "977-374",
-          SubjectName: "SW VERIFICATION &VALIDATION",
-          ClassRoom: "5210"
-        },
-        {
-          Day: "TUE",
-          TimeStart: "08.30",
-          TimeEnd: "10.30",
-          SubjectCode: "140-452",
-          SubjectName: "SOFTWARE CONSTRUCTION&MAIN",
-          ClassRoom: "5210"
-        },
-        {
-          Day: "TUE",
-          TimeStart: "10.30",
-          TimeEnd: "12.30",
-          SubjectCode: "977-374",
-          SubjectName: "SW VERIFICATION &VALIDATION",
-          ClassRoom: "5210"
-        },
-        {
-          Day: "TUE",
-          TimeStart: "13.30",
-          TimeEnd: "16.30",
+          TimeStart: "11.30",
+          TimeEnd: "13.30",
           SubjectCode: "140-461",
-          SubjectName: "INTRO TO GAME DESIGN&DEVELOP",
-          ClassRoom: "5210"
-        },
-        {
-          Day: "TUE",
-          TimeStart: "16.30",
-          TimeEnd: "19.30",
-          SubjectCode: "140-461",
-          SubjectName: "INTRO TO GAME DESIGN&DEVELOP",
+          SubjectName: "INTRO TO GAME",
           ClassRoom: "5210"
         },
         {
           Day: "WED",
-          TimeStart: "08.30",
+          TimeStart: "08.00",
           TimeEnd: "10.30",
-          SubjectCode: "975-300",
-          SubjectName: "ASEAN STUDIES",
-          ClassRoom: "5210"
-        },
-        {
-          Day: "WED",
-          TimeStart: "10.30",
-          TimeEnd: "12.30",
           SubjectCode: "975-300",
           SubjectName: "ASEAN STUDIES",
           ClassRoom: "5210"
@@ -202,9 +162,9 @@ export default {
         },
         {
           Day: "THU",
-          TimeStart: "13.30",
+          TimeStart: "13.00",
           TimeEnd: "15.00",
-          SubjectCode: "977-372",
+          SubjectCode: "977-375",
           SubjectName: "SOFTWARE CONSTRUCTION&MAIN",
           ClassRoom: "5210"
         },
@@ -214,7 +174,7 @@ export default {
           TimeEnd: "17.30",
           SubjectCode: "977-372",
           SubjectName: "SOFTWARE CONSTRUCTION&MAIN",
-          ClassRoom: "5210"
+          ClassRoom: "5211"
         },
         {
           Day: "FRI",
@@ -427,6 +387,7 @@ export default {
           sumtimez,
           SubjectCode
         );
+        console.log("styletext:"+styletext.style)
         this.inputInfoToSubject(this.SubjectTue,this.indexpos,result,row,styletext,subjectElement,subject2)
         this.popArray(this.SubjectTue,colspan)
       } else if (Day == "WED") {
@@ -556,6 +517,14 @@ export default {
       let divWidth = "wdith:0px;"
       let divLeft = `text-align: center;`;
       let divRight = `text-align: center;`;
+      let time
+      let colors 
+      let culcet
+      let sssaa
+      let widthLeft = (preveColspan * 150) -50
+      let widthRight = (colspan * 150) -70
+      let halfF = 50 / (colspan + 1);
+      let halfs = 100 - halfF;
       // let row = "null";
 
       let color = null;
@@ -573,51 +542,51 @@ export default {
 
       console.log("codeColourList:" + JSON.stringify(this.codeColourList));
 
-      if (timestart == 30 && timeend == 30) {
-        let halfF = 50 / (colspan + 1);
-        let halfs = 100 - halfF;
+          if (pretimeend == Timestart && timestart == 30) {
+          time = Timeend - prevetimeStart;
+          
 
-        if (pretimeend == Timestart) {
-          let divTimebroken;
-          let time = Timeend - prevetimeStart;
-
-          console.log(sumtime1 + "----->2");
-          console.log(this.sumtime + "------>1");
-
-          console.log(prevetimeStart + "START");
-          console.log(Timeend + "END");
-
-          console.log("Time : " + time);
-
-          let colors = (this.sumtime * 100) / time;
-          let culcet = colors % 10;
-          let sssaa = colors - culcet;
-          let widthLeft = (preveColspan * 150) -50
-          let widthRight = (colspan * 150) -70
-
+          colors = (this.sumtime * 100) / time;
+          culcet = colors % 10;
+          sssaa = colors - culcet;
+        
           halfF = 50 / (colspan + preveColspan + 1);
           halfs = 100 - halfF + 0.1;
-
-          style = `background: linear-gradient(to right, white  ${halfF}%, ${color}  ${halfF}%, ${color} ${sssaa}% ,yellow ${sssaa}% ,yellow ${halfs}%,white ${halfF}%);  height: 120px;`;
-          text = ` text-align: center; font-size: 12px;`;
-          divLeft = ` text-align: center; width:${widthLeft}px;`
-          divRight = ` text-align: center; width:${widthRight}px;`
-          divWidth = "width:75px;"
-        } else {
+          
+            if(prevetimeStart.slice(-2) == 30 && timeend == 30){
+            style = `background: linear-gradient(to right, white  ${halfF}%, ${color}  ${halfF}%, ${color} ${sssaa+colspan}% ,yellow ${sssaa}% ,yellow ${halfs}%,white ${halfF}%);  height: 120px;`;
+            text = ` text-align: center; font-size: 12px;`
+            divLeft = ` text-align: center; width:${widthLeft}px;`
+            divRight = ` text-align: center; width:${widthRight}px;`
+            divWidth = "width:75px;"
+            }else if(prevetimeStart.slice(-2) == 30){
+            style = `background: linear-gradient(to right, white  ${halfF}%, ${color}  ${halfF}%, ${color} ${sssaa+colspan+halfF}% ,yellow ${sssaa}%;  height: 120px;`;
+            text = ` text-align: center; font-size: 12px;`
+            divLeft = ` text-align: center; width:${widthLeft}px;`
+            divRight = ` text-align: center; width:${widthRight}px; margin-left:${sssaa+colspan}px;`
+            divWidth = "width:75px;"
+            }else{
+            style = `background: linear-gradient(to right,${color}  ${halfF}%, ${color} ${sssaa+colspan+halfF}% ,yellow ${sssaa}%;  height: 120px;`;
+            text = ` text-align: center; font-size: 12px;`
+            divLeft = ` text-align: center; width:${widthLeft}px;  margin-left:${sssaa+colspan}px;`
+            divRight = ` text-align: center; width:${widthRight}px; margin-left:${sssaa+colspan+halfF*3}px;`
+            divWidth = "width:0px;"
+            }
+            
+        }else if (timestart == 30 && timeend == 30) {
+      
           style = ` background: linear-gradient(to right, white  ${halfF}%, ${color} ${halfF}%, ${color} ${halfs}%, white  ${halfF}%); height: 50px; `;
           text = ` text-align: center; font-size: 12px;`;
-        }
+        
       } else if (timestart == 30) {
-        let halfF = 50 / (colspan + 1);
         style = `background-color:red; background: linear-gradient(to right, white ${halfF}%,  ${color} ${halfF}%); height: 120px; `;
         text = ` text-align: center; font-size: 12px;`;
+        
       } else if (timeend == 30) {
-        let halfF = 50 / (colspan + 1);
         style = ` background-color:${color}; background: linear-gradient(to left, white ${halfF}%,  ${color} ${halfF}%); height: 120px;`;
         text = `margin-left:65px; width:130px; text-align: center; font-size: 12px;`;
+        
       } else if (timestart == 30 && timeend == 30) {
-        let halfF = 50 / (colspan + 1);
-        let halfs = 100 - halfF;
         style = `  background: linear-gradient(to right, white  ${halfF}%,  ${color} ${halfF}%,  ${color} ${halfs}%, white  ${halfF}%);  height: 120px; `;
       } else {
         style = `background-color: ${color}; height:120px; width:195px `;

@@ -329,7 +329,7 @@ export default {
           element.From,
           element.Day,
           element.SubjectNameEN,
-          element.RoomName,
+          element.SubjectCode,
           element
         );
 
@@ -393,7 +393,7 @@ export default {
     ) {
       let result = null;
       console.log("Precolspan" + this.preveColspan + Day);
-      let sumtimez = TimeEnd - TimeStart;
+      let sumtimez = TimeEnd.replace(':','.') - TimeStart.replace(':','.') ;
       let timestart = TimeStart.slice(-2);
       let subject2 = null
       let row = null
@@ -426,7 +426,8 @@ export default {
           this.preveColspan,
           this.prevetimeStart,
           sumtimez,
-          SubjectCode
+          SubjectCode,
+          subject2
         );
        this.inputInfoToSubject(this.SubjectMon,this.indexpos,result,row,styletext,subjectElement,subject2)
        this.popArray(this.SubjectMon,colspan)
@@ -440,8 +441,10 @@ export default {
           this.preveColspan,
           this.prevetimeStart,
           sumtimez,
-          SubjectCode
+          SubjectCode,
+          subject2
         );
+        console.log("styletext:"+styletext.style)
         this.inputInfoToSubject(this.SubjectTue,this.indexpos,result,row,styletext,subjectElement,subject2)
         this.popArray(this.SubjectTue,colspan)
       } else if (Day == "Wed") {
@@ -454,7 +457,8 @@ export default {
           this.preveColspan,
           this.prevetimeStart,
           sumtimez,
-          SubjectCode
+          SubjectCode,
+          subject2
         );
         this.inputInfoToSubject(this.SubjectWed,this.indexpos,result,row,styletext,subjectElement,subject2)
         this.popArray(this.SubjectWed,colspan)
@@ -468,8 +472,9 @@ export default {
           this.preveColspan,
           this.prevetimeStart,
           sumtimez,
-          SubjectCode
-        );
+          SubjectCode,
+          subject2      
+          );
         this.inputInfoToSubject(this.SubjectThu,this.indexpos,result,row,styletext,subjectElement,subject2)
         this.popArray(this.SubjectThu,colspan)
       } else if (Day == "Fri") {
@@ -482,7 +487,8 @@ export default {
           this.preveColspan,
           this.prevetimeStart,
           sumtimez,
-          SubjectCode
+          SubjectCode,
+          subject2
         );
          this.inputInfoToSubject(this.SubjectFri,this.indexpos,result,row,styletext,subjectElement,subject2)
          this.popArray(this.SubjectFri,colspan)
@@ -496,7 +502,8 @@ export default {
           this.preveColspan,
           this.prevetimeStart,
           sumtimez,
-          SubjectCode
+          SubjectCode,
+          subject2
         );
          this.inputInfoToSubject(this.SubjectSat,this.indexpos,result,row,styletext,subjectElement,subject2)
          this.popArray(this.SubjectSat,colspan)
@@ -562,7 +569,8 @@ export default {
       preveColspan,
       prevetimeStart,
       sumtime1,
-      SubjectCode
+      SubjectCode,
+      PrevSubjectCode
     ) {
       let timestart = Timestart.slice(-2);
       let timeend = Timeend.slice(-2);
@@ -571,12 +579,23 @@ export default {
       let divWidth = "wdith:0px;"
       let divLeft = `text-align: center;`;
       let divRight = `text-align: center;`;
+      let time
+      let colors 
+      let culcet
+      let sssaa
+      let widthLeft = (preveColspan * 150) -50
+      let widthRight = (colspan * 150) -70
+      let halfF = 50 / (colspan + 1);
+      let halfs = 100 - halfF;
       // let row = "null";
 
       let color = null;
-
+      let prevcolor = null;
       this.codeColourList.forEach(element => {
-        if (element.SubjectCode == SubjectCode) {
+        if (pretimeend == Timestart && timestart == 30 && element.SubjectCode == PrevSubjectCode.SubjectCode){
+          prevcolor = element.color
+        } 
+         if (element.SubjectCode == SubjectCode) {
           color = element.color;
         }
       });
@@ -586,57 +605,57 @@ export default {
         this.codeColourList.push({ SubjectCode: SubjectCode, color: color });
       }
 
+        // if (prevcolor == null){
+        //   prevcolor = this.getRandomColor()
+        //   this.codeColourList.push({ SubjectCode: SubjectCode, color: prevcolor });
+        // }
+
       console.log("codeColourList:" + JSON.stringify(this.codeColourList));
+      if (pretimeend == Timestart && timestart == 30) {
+          time = Timeend.replace(':','.') - prevetimeStart.replace(':','.');
+          
 
-      if (timestart == 30 && timeend == 30) {
-        let halfF = 50 / (colspan + 1);
-        let halfs = 100 - halfF;
-
-        if (pretimeend == Timestart) {
-          let divTimebroken;
-          let time = Timeend - prevetimeStart;
-
-          console.log(sumtime1 + "----->2");
-          console.log(this.sumtime + "------>1");
-
-          console.log(prevetimeStart + "START");
-          console.log(Timeend + "END");
-
-          console.log("Time : " + time);
-
-          let colors = (this.sumtime * 100) / time;
-          let culcet = colors % 10;
-          let sssaa = colors - culcet;
-          let widthLeft = (preveColspan * 150) -50
-          let widthRight = (colspan * 150) -70
-
+          colors = (this.sumtime * 100) / time;
+          culcet = colors / 10;
+          sssaa = colors - culcet;
+          console.log("sssaa:"+sssaa)
           halfF = 50 / (colspan + preveColspan + 1);
-          halfs = 100 - halfF + 0.1;
-
-          style = `background: linear-gradient(to right, white  ${halfF}%, ${color}  ${halfF}%, ${color} ${sssaa}% ,yellow ${sssaa}% ,yellow ${halfs}%,white ${halfF}%);  height: 120px;`;
-          text = ` text-align: center; font-size: 12px;`;
-          divLeft = ` text-align: center; width:${widthLeft}px;`
-          divRight = ` text-align: center; width:${widthRight}px;`
-          divWidth = "width:75px;"
-        } else {
-          style = ` background: linear-gradient(to right, white  ${halfF}%, ${color} ${halfF}%, ${color} ${halfs}%, white  ${halfF}%); height: 50px; `;
-          text = ` text-align: center; font-size: 12px;`;
-        }
+          halfs = 100 - halfF;
+          
+            if(prevetimeStart.slice(-2) == 30 && timeend == 30){
+            style = `background: linear-gradient(to right, white  ${halfF}%, ${prevcolor}  ${halfF}%, ${prevcolor} ${sssaa+5.5}% ,${color} ${sssaa}% ,${color} ${halfs}%,white ${halfF}%);  height: 120px;`;
+            text = ` text-align: center; font-size: 12px; color:white;`
+            divLeft = ` text-align: center; width:${widthLeft}px;`
+            divRight = ` text-align: center; width:${widthRight}px;`
+            divWidth = "width:75px;"
+            }else if(prevetimeStart.slice(-2) == 30){
+            style = `background: linear-gradient(to right, white  ${halfF}%,  ${prevcolor} ${halfF}%, ${prevcolor} ${sssaa+colspan+halfF}% ,${color} ${sssaa}%;  height: 120px;`;
+            text = ` text-align: center; font-size: 12px; color:white;`
+            divLeft = ` text-align: center; width:${widthLeft}px;`
+            divRight = ` text-align: center; width:${widthRight}px; margin-left:${sssaa+colspan}px;`
+            divWidth = "width:75px;"
+            }else{
+            style = `background: linear-gradient(to right,${prevcolor}  ${halfF}%, ${prevcolor} ${sssaa+colspan+halfF}% ,${color} ${sssaa}%;  height: 120px;`;
+            text = ` text-align: center; font-size: 12px; color:white;`
+            divLeft = ` text-align: center; width:${widthLeft}px;  margin-left:${sssaa+colspan}px;`
+            divRight = ` text-align: center; width:${widthRight}px; margin-left:${sssaa+colspan+halfF*3}px;`
+            divWidth = "width:0px;"
+            }
+            
+        }else if (timestart == 30 && timeend == 30) {
+        
+          style = ` background: linear-gradient(to right, white  ${halfF}%, ${color} ${halfF}%, ${color} ${halfs}%, white  ${halfF}%); height: 120px; `;
+          text = ` text-align: center; font-size: 12px; color:white;`;
+        
       } else if (timestart == 30) {
-        let halfF = 50 / (colspan + 1);
         style = `background-color:red; background: linear-gradient(to right, white ${halfF}%,  ${color} ${halfF}%); height: 120px; `;
-        text = ` text-align: center; font-size: 12px;`;
+        text = ` text-align: center; font-size: 12px; margin-left:50px; color:white;`;
       } else if (timeend == 30) {
-        let halfF = 50 / (colspan + 1);
         style = ` background-color:${color}; background: linear-gradient(to left, white ${halfF}%,  ${color} ${halfF}%); height: 120px;`;
-        text = `margin-left:65px; width:130px; text-align: center; font-size: 12px;`;
-      } else if (timestart == 30 && timeend == 30) {
-        let halfF = 50 / (colspan + 1);
-        let halfs = 100 - halfF;
-        style = `  background: linear-gradient(to right, white  ${halfF}%,  ${color} ${halfF}%,  ${color} ${halfs}%, white  ${halfF}%);  height: 120px; `;
+        text = `margin-left:65px; width:130px; text-align: center; font-size: 12px; color:white;`;
       } else {
         style = `background-color: ${color}; height:120px; width:195px `;
-        text = `text-align: center; font-size: 12px;`;
+        text = `text-align: center; font-size: 12px; color:white;`;
       }
       return { style, text ,divLeft,divRight,divWidth };
     },
