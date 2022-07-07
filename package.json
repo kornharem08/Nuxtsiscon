@@ -21,7 +21,7 @@
     "form-data": "^2.5.1",
     "html-to-image": "^0.1.1",
     "html2canvas": "^1.0.0-rc.4",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "nuxt": "^2.0.0",
     "vue-axios": "^2.1.4",
     "vue-swal": "^1.0.0"
